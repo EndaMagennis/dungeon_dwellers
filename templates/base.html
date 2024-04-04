@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% block meta %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dugeon Dwellers</title>
+        {% endblock %}
+
+        {% block extra_meta %}
+        <!-- extra meta tags -->
+        {% endblock %}
+
+        {% block corecss %}
+        <!-- core css -->
+        {% endblock %}
+
+        {% block extracss %}
+        <!-- extra css -->
+        {% endblock %}
+
+        {% block corejs %}
+        <!-- core js -->
+        {% endblock %}
+
+        {% block extrajs %}
+        <!-- extra js -->
+        {% endblock %}
+
+        <title></title>
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        {% block page_header %}
+        {% endblock %}
+
+        {% block content %}
+        {% endblock %}
+
+        {% block postloadjs %}
+    
+        {% endblock %}
+    </body>
+</html>
