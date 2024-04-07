@@ -7,7 +7,7 @@ cloudinary==1.39.1
 cryptography==42.0.5
 db==0.1.1
 defusedxml==0.7.1
-Django==5.0.3
+Django==4.2.8
 django-allauth==0.61.1
 django-cloudinary-storage==0.3.0
 django-countries==7.6.1
