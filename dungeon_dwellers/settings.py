@@ -37,7 +37,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost', 
     '127.0.0.1',
-    'dungeon-dwellers-6fd68f5d0523.herokuapp.com',
+    '.herokuapp.com',
     '.codeanyapp.com',
 ]
 
