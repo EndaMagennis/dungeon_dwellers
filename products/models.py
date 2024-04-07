@@ -43,6 +43,7 @@ class Category(models.Model):
         # The get_friendly_name method returns the friendly name of the category.
         return self.friendly_name
 
+
 class Tag(models.Model):
     """A model for product tags."""
     # The Tag model has two fields: name and friendly_name.
@@ -203,6 +204,14 @@ class Product(models.Model):
                     return default_image.first().image_url
                 else:
                     return active_images.first().image_url
+                
+    def get_all_active_images(self):
+        """Get all active images of product"""
+        images = ProductImage.objects.filter(product=self)
+        if images.exists():
+            return images.filter(is_active=True).count()
+        else:
+            return False
 
 
 class ProductImage(models.Model):

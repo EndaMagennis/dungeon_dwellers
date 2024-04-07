@@ -9,21 +9,41 @@
 </div>
 {% endblock %}
 {% block content %}
-        <div class="container h-100">
-            <div class="row my-5">
-                <div class="col-7 col-md-6 my-auto">
-                    <h1 class="display-4 logo-font text-black">
-                        Products
-                    </h1>
-                    {% if products %}
-                        {% for product in products %}
-                            <h3>{{ product.name }}</h3>
-                        {% endfor %}
+    <div class="container container-fluid h-100">
+        <div class="row my-5">
+            {% if products %}
+                {% for product in products %}
+                    <div class="card col-12 col-md-6 col-lg-3 my-5 rounded-0 mt-5">
+                        {% if product.images.all %}
+                        <img class="card-img-top" src="{% product.get_main_image }" alt="{{ product.image.alt_text}}">
                         {% else %}
-                            <h3>No products found.</h3>
+                        <img class="card-img-top" src="{% static 'images/placeholder.jpg' %}" alt="{{ product.name }}">
                         {% endif %}
-                </div>
-            </div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">{{ product.description|truncatewords:10 }}</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Price: {{ product.price }}</li>
+                            {% if product.has_dimensions %}
+                            <li class="list-group-item">Height: {{ product.dimensions }}cm</li>
+                            {% endif %}
+                            {% if product.has_quantity %}
+                            <li class="list-group-item">Quantity: {{ product.quantity }}</li>
+                            {% endif %}
+                        </ul>
+                        <div class="card-body">
+                            {% for tag in product.tags.all %}
+                                <small>{{ tag.friendly_name }},</small> 
+                            {% endfor %}
+                            <hr>
+                            <a href="{% url 'product_detail' product.id %}" class="card-link">View Details</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h3>No products found.</h3>
+            {% endif %}
         </div>
-    
+    </div>
 {% endblock %}
