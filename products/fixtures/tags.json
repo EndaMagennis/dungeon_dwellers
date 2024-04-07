@@ -1,0 +1,82 @@
+[
+  {
+    "pk": 1,
+    "model": "products.tag",
+    "fields": {
+      "name": "strategy",
+      "friendly_name": "Strategy"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "products.tag",
+    "fields": {
+      "name": "party",
+      "friendly_name": "Party"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "products.tag",
+    "fields": {
+      "name": "role_playing",
+      "friendly_name": "Role Playing"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "products.tag",
+    "fields": {
+      "name": "adventure",
+      "friendly_name": "Adventure"
+    }
+  },
+  {
+    "pk": 5,
+    "model": "products.tag",
+    "fields": {
+      "name": "cooperative",
+      "friendly_name": "Cooperative"
+    }
+  },
+  {
+    "pk": 6,
+    "model": "products.tag",
+    "fields": {
+      "name": "card_game",
+      "friendly_name": "Card Game"
+    }
+  },
+  {
+    "pk": 7,
+    "model": "products.tag",
+    "fields": {
+      "name": "fantasy",
+      "friendly_name": "Fantasy"
+    }
+  },
+  {
+    "pk": 8,
+    "model": "products.tag",
+    "fields": {
+      "name": "sci_fi",
+      "friendly_name": "Science Fiction"
+    }
+  },
+  {
+    "pk": 9,
+    "model": "products.tag",
+    "fields": {
+      "name": "puzzle",
+      "friendly_name": "Puzzle"
+    }
+  },
+  {
+    "pk": 10,
+    "model": "products.tag",
+    "fields": {
+      "name": "deck_building",
+      "friendly_name": "Deck Building"
+    }
+  }
+]

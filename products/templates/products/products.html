@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_title %}Products{% endblock %}
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+{% block content %}
+        <div class="container h-100">
+            <div class="row my-5">
+                <div class="col-7 col-md-6 my-auto">
+                    <h1 class="display-4 logo-font text-black">
+                        Products
+                    </h1>
+                    {% if products %}
+                        {% for product in products %}
+                            <h3>{{ product.name }}</h3>
+                        {% endfor %}
+                        {% else %}
+                            <h3>No products found.</h3>
+                        {% endif %}
+                </div>
+            </div>
+        </div>
+    
+{% endblock %}
