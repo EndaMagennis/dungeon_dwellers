@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'home',
     'products',
+    'profiles',
 ]
 
 SITE_ID = 1
