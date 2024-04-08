@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_title %}Product Detail{% endblock %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+    <div class="container container-fluid h-50 mt-5">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                {% if product.images.all %}
+                <img class="img-fluid rounded-0 p-2" src="{{ product.get_main_image }}" alt="{{ product.image.alt_text}}">
+                {% else %}
+                <img class="img-fluid rounded-0 p-2" src="{% static 'images/placeholder.jpg' %}" alt="{{ product.name }}">
+                {% endif %}
+            </div>
+            <div class="col-12 col-md-6 bg-dark text-white">
+                <h1>{{ product.name }}</h1>
+                <p>{{ product.description }}</p>
+                <p>Price: €{{ product.price }}</p>
+                {% if product.has_dimensions %}
+                <p>Height: <small>{{ product.dimensions }}mm</small></p>
+                {% endif %}
+                {% if product.has_quantity %}
+                <p>Quantity: {{ product.quantity }}</p>
+                {% endif %}
+                <div class="row">
+                    {% for tag in product.tags.all %}
+                        <small class="col text-muted">{{ tag.friendly_name }}</small>
+                    {% endfor %}
+                </div>
+                <hr>
+                <div class="text-center m-0 p-0 col">
+                    <a href="{% url 'products' %}" class="card-link btn btn-outline-primary">Back to Products</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

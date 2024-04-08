@@ -8,3 +8,14 @@ body {
     height: calc(100vh - 164px);
     color: #555;
 }
+
+footer {
+    color: #555;
+    text-align: center;
+    height: fit-content;
+}
+
+.card{
+    margin-top: 25px;
+    min-width: 400px;
+}

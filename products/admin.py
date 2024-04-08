@@ -21,10 +21,10 @@ class TagAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'category', 'price', 'created_at', 'updated_at')
+    list_display = ('name', 'category', 'price', 'sku', 'created_at', 'updated_at')
     search_fields = ('name', 'category', 'price')
     ordering = ('name',)
-    prepopulated_fields = {'slug': ('name',), 'sku': ('name',)}
+    prepopulated_fields = {'slug': ('name',)}
 
 @admin.register(ProductImage)
 class ProductImageAdmin(admin.ModelAdmin):

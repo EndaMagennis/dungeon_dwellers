@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 from django.db import models
 from django.utils.text import slugify
 from cloudinary.models import CloudinaryField
+import random
 
 
 # Create your models here.
@@ -109,7 +110,8 @@ class Product(models.Model):
     sku = models.CharField(
         max_length=255,
         null=True,
-        blank=True
+        blank=True,
+        help_text='Stock Keeping Unit (SKU) will be generated automatically'
     )
     name = models.CharField(
         max_length=255,
@@ -179,7 +181,7 @@ class Product(models.Model):
     
     def generate_sku(self):
         # The generate_sku method generates a SKU for the product.
-        return f'{self.name}-{datetime.now().strftime("%Y%m%d%H%M%S%f")}'
+        return f'{datetime.now().strftime("%Y%m%d%H%M%S")}-{random.randint(1000, 9999)}'
     
     def save(self, *args, **kwargs):
         # The save method saves the product to the database.
