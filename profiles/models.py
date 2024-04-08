@@ -73,13 +73,13 @@ class Address(models.Model):
         max_length=80,
         null=True,
         blank=True,
-        verbose_name='Address',
+        verbose_name='Address 1',
     )
     address_line_2 = models.CharField(
         max_length=80,
         null=True,
         blank=True,
-        verbose_name='Address',
+        verbose_name='Address 2',
     )
     county = models.CharField(
         max_length=80,
@@ -117,10 +117,13 @@ class Address(models.Model):
     )
 
     def __str__(self):
-        return f'{self.address_line_1}, {self.city}, {self.counrty} {self.post_code}'
+        return f'{self.address_line_1}, {self.city}, {self.country} {self.post_code}'
     
     def save(self, *args, **kwargs):
         """Set default address to False if another address is set to True"""
-        if self.is_default:
-            self.profile.addresses.filter(is_default=True).update(is_default=False)
         super().save(*args, **kwargs)
+        
+        if self.is_default:
+            for address in self.profile.addresses.exclude(id=self.id):
+                address.is_default = False
+                address.save()

@@ -1,5 +1,6 @@
 from django.views import View
 from django.shortcuts import render, get_object_or_404, redirect, reverse
+
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -13,36 +14,78 @@ class ProfileView(View):
         
         if request.user.is_authenticated:
             profile = get_object_or_404(Profile, user=request.user)
-            address = Address.objects.filter(profile=profile)
+            addresses = Address.objects.filter(profile=profile)
+            default_address = addresses.filter(is_default=True)
 
             context = {
                 'profile': profile,
-                'address': address,
+                'addresses': addresses,
+                'default_address': default_address,
             }
             return render(request, 'profiles/profile.html', context)
         else:
-            return render(request, 'account/login.html')
+            return render(request, 'home/index.html')
 
+
+class EditAvatarAjaxView(View):
+    """View for editing user avatar"""
+
+    def post(self, request, *args, **kwargs):
+        is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
+
+        if is_ajax:
+            avatar = request.FILES.get('avatar')
+            profile = get_object_or_404(Profile, user=request.user)
+            profile.avatar = avatar
+            profile.save()
+            return redirect(reverse('profile', args=[request.user.username]))
+    
 
 class ProfileUpdateView(View):
     """View for updating user profile"""
     def get(self, request, *args, **kwargs):
+        avatar = request.user.profile.avatar
         profile = get_object_or_404(Profile, user=request.user)
-        form = ProfileForm(instance=profile)
+        profile_form = ProfileForm(instance=profile)
         context = {
-            'form': form,
+            'profile_form': profile_form,
+            'avatar': avatar,
         }
-        return render(request, 'profiles/profile_update.html', context)
+        return render(request, 'profiles/update_profile.html', context)
     
     def post(self, request, *args, **kwargs):
         profile = get_object_or_404(Profile, user=request.user)
-        form = ProfileForm(request.POST, request.FILES, instance=profile)
-        if form.is_valid():
-            form.save()
+        avatar = profile.avatar
+        profile_form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if profile_form.is_valid():
+            profile_form.save()
             messages.success(request, 'Profile updated successfully')
+            return redirect(reverse('profile', args=[request.user.username]))
+        context = {
+            'profile_form': profile_form,
+            'avatar': avatar,
+        }
+        return render(request, 'profiles/profile.html', context)
+    
+
+class AddressCreateView(View):
+    """View for creating user address"""
+    def get(self, request, *args, **kwargs):
+        form = AddressForm()
+        context = {
+            'form': form,
+        }
+        return render(request, 'profiles/add_address.html', context)
+    
+    def post(self, request, *args, **kwargs):
+        form = AddressForm(request.POST)
+        if form.is_valid():
+            address = form.save(commit=False)
+            address.profile = request.user.profile
+            address.save()
+            messages.success(request, 'Address created successfully')
             return redirect(reverse('profile', args=[request.user.username]))
         context = {
             'form': form,
         }
-        return render(request, 'profiles/profile_update.html', context)
-    
+        return render(request, 'profiles/add_address.html', context)

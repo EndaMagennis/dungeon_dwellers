@@ -7,11 +7,10 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         """Meta class for ProfileForm"""
         model = Profile
-        fields = ['first_name', 'last_name', 'avatar']
+        fields = ['first_name', 'last_name']
         labels = {
             'first_name': 'First Name',
             'last_name': 'Last Name',
-            'avatar': 'Avatar',
         }
         exclude = ('user', 'created_at', 'updated_at')
 
@@ -19,13 +18,13 @@ class ProfileForm(forms.ModelForm):
         """Constructor for ProfileForm"""
         super().__init__(*args, **kwargs)
 
+
         placeholders = {
             'first_name': 'First Name',
             'last_name': 'Last Name',
         }
 
         self.fields['first_name'].widget.attrs.update({'autofocus': 'autofocus'})
-        self.fields['avatar'].widget.attrs.update({'class': 'form-control-file'})
 
         for field in self.fields:
             if self.fields[field].required:
@@ -42,7 +41,7 @@ class AddressForm(forms.ModelForm):
     class Meta:
         """Meta class for AddressForm"""
         model = Address
-        fields = ['address_line_1', 'address_line_2', 'city', 'county', 'post_code', 'country']
+        fields = ['address_line_1', 'address_line_2', 'city', 'county', 'post_code', 'country', 'is_default']
         labels = {
             'address_line_1': 'Street Address 1',
             'address_line_2': 'Street Address 2',
@@ -50,6 +49,7 @@ class AddressForm(forms.ModelForm):
             'county': 'County',
             'post_code': 'Postcode',
             'country': 'Country',
+            'is_default': 'Default Address',
         }
         exclude = ('profile',)
 
@@ -64,6 +64,7 @@ class AddressForm(forms.ModelForm):
             'city': 'Town or City',
             'post_code': 'Postcode',
             'country': 'Country',
+            'is_default': 'Default Address',
         }
 
         self.fields['address_line_1'].widget.attrs.update({'autofocus': 'autofocus'})
@@ -79,6 +80,6 @@ class AddressForm(forms.ModelForm):
             self.fields[field].widget.attrs['placeholder'] = placeholder
             # set the class attribute of the field to 'border-black rounded-0 profile-form-input'
             self.fields[field].widget.attrs['class'] = 'border-black rounded-0 profile-form-input'
-            # set the label attribute of the field to False
-            self.fields[field].label = False
-
+            # set the label attribute of the field to False 
+            if field != 'is_default':
+                self.fields[field].label = False
