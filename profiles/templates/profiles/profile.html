@@ -43,6 +43,19 @@
                 <a href="{% url 'update_profile' user=request.user %}" class="btn btn-primary">Edit Profile</a>
                 <a href="{% url 'add_address' %}" class="btn btn-outline-primary">Add Address</a>
             </div>
+            <hr>
+            <div class="wishlist">
+                <h2>Wishlist</h2>
+                {% if wishlist %}
+                    <ul>
+                        {% for item in wishlist %}
+                            <li>{{ item.product.name }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No items in wishlist</p>
+                {% endif %}
+            </div>
         </div>
     </div>
 {% endblock %}

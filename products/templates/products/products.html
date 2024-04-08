@@ -20,7 +20,11 @@
                         <img class="card-img-top rounded-0 p-2" src="{% static 'images/placeholder.jpg' %}" alt="{{ product.name }}">
                         {% endif %}
                         <div class="card-body">
-                            <h5 class="card-title">{{ product.name }}</h5>
+                            <div class="row">
+                                <h5 class="card-title col-9">{{ product.name }}</h5>
+                                <a class="col-3 btn btn-small wishlist_toggle" data-id="{{ product.id }}"><i class="fa-regular fa-heart"></i></a>
+                            </div>
+                            
                             <p class="card-text">{{ product.description|truncatewords:10 }}</p>
                             <div class="row">
                                 <p class="col">Price: €{{ product.price }}</p>
