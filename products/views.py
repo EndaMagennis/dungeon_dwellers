@@ -15,7 +15,7 @@ from .models import(
 class ProductView(View):
     """View for all products"""
     def get(self, request, *args, **kwargs):
-        p = Paginator(Product.objects.all(), 32)
+        p = Paginator(Product.objects.all(), 16)
         page = request.GET.get('page')
         products = p.get_page(page)
         query = None
@@ -28,17 +28,21 @@ class ProductView(View):
             'tags': tags,
         }
         # search using product name, description, tags, and categories
-        if 'q' in request.GET:
-            query = request.GET['q']
-            if not query:
-                return render(request, 'products/products.html', context)
-            queries = Q(name__icontains=query) | Q(description__icontains=query) | Q(tags__name__icontains=query) | Q(category__name__icontains=query)
-            products = Product.objects.filter(queries)
-            context = {
-                'products': products,
-                'categories': categories,
-                'tags': tags,
-            }
+        if request.GET:
+            query = request.GET.get('search-input')
+            if query:
+                products = Product.objects.filter(
+                    Q(name__icontains=query) |
+                    Q(description__icontains=query) |
+                    Q(tags__name__icontains=query) |
+                    Q(category__name__icontains=query)
+                ).distinct()
+                context = {
+                    'products': products,
+                    'categories': categories,
+                    'tags': tags,
+                    'query': query,
+                }
         return render(request, 'products/products.html', context)
 
 
