@@ -46,15 +46,19 @@
             <hr>
             <div class="wishlist">
                 <h2>Wishlist</h2>
-                {% if wishlist %}
-                    <ul>
-                        {% for item in wishlist %}
-                            <li>{{ item.product.name }}</li>
-                        {% endfor %}
-                    </ul>
+                {% if user.wishlist %}
+                    {% for product in user.wishlist.products.all %}
+                    {{ product.name }}
+                        {% if product.images.all %}
+                            <img src="{{ product.get_main_image }}" alt="{{ product.image.alt_text}}">
+                        {% else %}
+                            <img src="{% static 'images/placeholder.jpg' %}" alt="{{ product.name }}">
+                        {% endif %}
+                    {% endfor %}
                 {% else %}
-                    <p>No items in wishlist</p>
+                    <h3>No products found.</h3>
                 {% endif %}
+
             </div>
         </div>
     </div>

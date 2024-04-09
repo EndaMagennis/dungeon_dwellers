@@ -1,5 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
+
+{% block extra_title %}Update Profile{% endblock %}
+
+{% block page_header %}
+    <div class="container header-container mt-5">
+        <div class="row">
+            <div class="col">
+            </div>
+        </div>
+    </div>
+{% endblock %}
 
 {% block content %}
     <div class="container">
@@ -8,7 +20,9 @@
                 <h2>Update Profile</h2>
                 <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
-                    {{ form.as_p }}
+                    {% for field in profile_form %}
+                    {{ field | as_crispy_field }}
+                    {% endfor %}
                     <button type="submit" class="btn btn-primary">Update</button>
                 </form>
             </div>
