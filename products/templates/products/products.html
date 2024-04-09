@@ -4,52 +4,101 @@
 {% block page_header %}
 <div class="container header-container">
     <div class="row">
-        <div class="col"></div>
+        <div class="col">
+            
+        </div>
     </div>
 </div>
 {% endblock %}
 {% block content %}
-    <div class="container container-fluid h-100 mt-5">
+    <div class="container container-fluid mt-5">
         <div class="row">
-            {% if products %}
+            <div class="product-container col-10 offset-1">
+                <div class="row">
+            <div class="col text-center mt-3">
+                <h2 class="logo-font">Products</h2>
+                {% for c in categories %}
+                    <a class="category-badge text-decoration-none" href="{% url 'products' %}?category={{ c.name }}">
+                        <span class="p-2 mt-2 badge badge-white text-black rounded-0 border border-dark">{{ c.friendly_name }}</span>
+                    </a>
+                {% endfor %}
+                <hr class="w-50 mb-1">
+            </div>
+        </div>
+        <div class="row">
+        </div>
+            </div>
+        </div>
+        <div class="row">
                 {% for product in products %}
-                    <div class="card col-12 col-md-6 col-lg-3 mt-5 mx-3">
-                        {% if product.images.all %}
-                        <img class="card-img-top rounded-0 p-2" src="{% product.get_main_image }" alt="{{ product.image.alt_text}}">
-                        {% else %}
-                        <img class="card-img-top rounded-0 p-2" src="{% static 'images/placeholder.jpg' %}" alt="{{ product.name }}">
-                        {% endif %}
-                        <div class="card-body">
+                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                    <div class="card h-100 border-0">
+                        <a href="{% url 'product_detail' product.id %}">
+                            <img src="{{ product.get_main_image }}" class="card-img-top" alt="{{ product.image.alt_text }}">
+                        </a>
+                        <div class="card-body pb-0">
                             <div class="row">
                                 <h5 class="card-title col-9">{{ product.name }}</h5>
-                                <a class="col-3 btn btn-small wishlist_toggle" data-id="{{ product.id }}"><i class="fa-regular fa-heart"></i></a>
+                                <a class="col-3 btn btn-small add-to-wishlist" data-id="{{ product.id }}"><i class="fa-regular fa-heart"></i></a>
                             </div>
-                            
-                            <p class="card-text">{{ product.description|truncatewords:10 }}</p>
+                        </div>
+                        <div class="card-footer pt-0 border-0 text-left">
                             <div class="row">
-                                <p class="col">Price: €{{ product.price }}</p>
-                                {% if product.has_dimensions %}
-                                <p class="col">Height: <small>{{ product.dimensions }}mm</small></p>
-                                {% endif %}
-                                {% if product.has_quantity %}
-                                <p class="col">Quantity: {{ product.quantity }}</p>
-                                {% endif %}
-                            </div>  
-                            <div class="row">
-                                {% for tag in product.tags.all %}
-                                    <small class="col text-muted">{{ tag.friendly_name }}</small>
-                                {% endfor %}
+                                <div class="col">
+                                    <p class="card-text">{{ product.description|truncatewords:10 }}</p>
+                                    {% if product.tags %}
+                                    <p class="small mt-1 mb-0">
+                                        {% for tag in product.tags.all %}
+                                        <a href="{% url 'products' %}?tag={{ product.tag.name }}" class="text-muted">
+                                            <i class="fa fa-tag mr-1"></i>{{ tag.friendly_name }}
+                                        </a>
+                                        {% endfor %}
+                                    </p>
+                                    {% endif %}
+                                    {% if product.has_dimensions %}
+                                    <p class="small mt-1 mb-0">Height: <small>{{ product.dimensions }}mm</small></p>
+                                    {% endif %}
+                                    {% if product.has_quantity %}
+                                    <p class="small mt-1 mb-0">Quantity: {{ product.quantity }}</p>
+                                    {% endif %}
+                                </div>
                             </div>
-                            <hr>
-                        </div class="row">
-                        <div class="text-center m-0 p-0 col">
-                                <a href="{% url 'product_detail' product.id %}" class="card-link btn btn-outline-primary">View Details</a>
                         </div>
                     </div>
+                </div>
                 {% endfor %}
-            {% else %}
-                <h3>No products found.</h3>
-            {% endif %}
         </div>
     </div>
 {% endblock %}
+
+{% block postloadjs %}
+    <script>
+        $(document).ready(function() {
+            $('.add-to-wishlist').each(function() {
+                $(this).on('click', function(e) {
+                    let product_id = $(this).attr('data-id');
+                    e.stopPropagation();
+                    e.preventDefault();
+                    $(this).parent().append('<i class="fa fa-spinner fa-spin"></i>');
+                    $.ajax({
+                        url: "{% url 'add_remove_wishlist' %}",
+                        type: 'POST',
+                        data: {
+                            'product_id': product_id,
+                            'csrfmiddlewaretoken': '{{ csrf_token }}'
+                        },
+                        success: function(data) {
+                            if (data.added) {
+                                $(this).html('<i class="fa fa-heart"></i>');
+                                $(this).find('i.fa-spinner').remove();
+                            } else {
+                                $(this).html('<i class="fa-regular fa-heart"></i>');
+                            }
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+{% endblock %}
+

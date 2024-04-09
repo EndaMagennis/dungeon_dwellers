@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime
 from django.db import models
 from django.utils.text import slugify
 from cloudinary.models import CloudinaryField
@@ -227,10 +227,17 @@ class ProductImage(models.Model):
         related_name='images'
     )
     image = CloudinaryField(
-        'product_image',
+        'product_images',
         folder='product_images',
         null=False,
-        blank=False
+        blank=False,
+        default='static/images/placeholder.jpg',
+    )
+    image_url = models.URLField(
+        max_length=1024,
+        null=True,
+        blank=True,
+        verbose_name='Image URL'
     )
     alt_text = models.CharField(
         max_length=255,
@@ -262,19 +269,15 @@ class ProductImage(models.Model):
     def __str__(self):
         # The __str__ method returns the name of the product image.
         return self.product.name
-    
+        
     def save(self, *args, **kwargs):
         # The save method saves the product image to the database.
         if self.default_image:
-            for image in ProductImage.objects.filter(product=self.product):
-                if image != self:
-                    image.default_image = False
-                    image.save()
-        
+            ProductImage.objects.filter(product=self.product).update(default_image=False)
+        super().save(*args, **kwargs)
+    
     @property
-    def image_url(self):
-        # The image_url property returns the URL of the image.
-        if self.image:
-            return self.image.url
-        return 'static/images/placeholder.jpg'
+    def image_name(self):
+        # The image_name property returns the name of the image.
+        return self.image.name
     
