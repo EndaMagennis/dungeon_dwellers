@@ -1,5 +1,6 @@
 from django.views import View
 from django.shortcuts import render, get_object_or_404, redirect
+from django.http import JsonResponse
 from django.contrib import messages
 from .models import Wishlist
 from products.models import Product
@@ -27,21 +28,25 @@ class AddRemoveWishlistView(View):
     """View for adding and removing products from wishlist"""
     def post(self, request, *args, **kwargs):
         ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
-        if request.user.is_authenticated:
+        if request.user.is_authenticated and ajax:
             product_id = request.POST.get('product_id')
             product = get_object_or_404(Product, id=product_id)
             wishlist = get_object_or_404(Wishlist, user=request.user)
-            action = request.POST.get('action')
-            if action == 'add':
-                wishlist.add_to_wishlist(product)
-                messages.success(request, f'{product.name} added to wishlist')
-            elif action == 'remove':
+            if wishlist.add_to_wishlist(product):
+                product_in_wishlist = True
+                messages.success(request, 'Product added to wishlist')
+            else:
                 wishlist.remove_from_wishlist(product)
-                messages.success(request, f'{product.name} removed from wishlist')
-            return redirect('wishlist')
+                product_in_wishlist = False
+                messages.success(request, 'Product removed from wishlist')
+            return JsonResponse(
+                {
+                    'success': True,
+                    'product_in_wishlist': product_in_wishlist
+                }
+            )
         else:
             return render(request, 'account/login.html')
-
 
 class ClearWishlistView(View):
     """View for clearing wishlist"""
