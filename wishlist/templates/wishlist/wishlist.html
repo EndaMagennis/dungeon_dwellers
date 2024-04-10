@@ -18,7 +18,7 @@
         <div class="row">
             {% if products %}
                 {% for product in products %}
-                    <div class="card h-100 border-0 m-2 text-dark">
+                    <div class="card border-0 m-2 text-dark">
                     {% if product.images.all %}
                         <a href="{% url 'product_detail' product.id %}">
                             <img src="{{ product.get_main_image }}" class="card-img-top" alt="{{ product.image.alt_text }}">
