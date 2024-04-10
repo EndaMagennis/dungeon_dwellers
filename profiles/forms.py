@@ -41,17 +41,34 @@ class AddressForm(forms.ModelForm):
     class Meta:
         """Meta class for AddressForm"""
         model = Address
-        fields = ['address_line_1', 'address_line_2', 'city', 'county', 'post_code', 'country', 'is_default']
+        fields = [
+            'address_line_1',
+            'address_line_2',
+            'city',
+            'county',
+            'post_code',
+            'phone_number',
+            'country',
+            'is_default']
         labels = {
             'address_line_1': 'Street Address 1',
             'address_line_2': 'Street Address 2',
             'city': 'Town or City',
             'county': 'County',
             'post_code': 'Postcode',
+            'phone_number': 'Phone Number',
             'country': 'Country',
             'is_default': 'Default Address',
         }
+
+        widgets = {
+            'country': forms.Select(attrs={'class': 'border-black rounded-0 profile-form-input'}),
+            'phone_number': forms.NumberInput(attrs={'class': 'border-black rounded-0 profile-form-input'}),
+            'is_default': forms.CheckboxInput(attrs={'class': 'border-black rounded-0 profile-form-input'})
+        }
+
         exclude = ('profile',)
+
 
     def __init__(self, *args, **kwargs):
         """Constructor for AddressForm"""
@@ -64,6 +81,7 @@ class AddressForm(forms.ModelForm):
             'city': 'Town or City',
             'post_code': 'Postcode',
             'country': 'Country',
+            'phone_number': 'Phone Number',
             'is_default': 'Default Address',
         }
 

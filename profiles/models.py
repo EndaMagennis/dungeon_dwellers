@@ -103,6 +103,12 @@ class Address(models.Model):
         max_length=10,
         verbose_name='Post Code',
     )
+    phone_number = models.CharField(
+        max_length=20,
+        null=True,
+        blank=True,
+        verbose_name='Phone Number',
+    )
     is_default = models.BooleanField(
         default=False,
         verbose_name='Default Address',
