@@ -10,6 +10,13 @@ html {
     overflow-y: scroll;
 }
 
+header {
+    background-color: #333;
+    color: white;
+    padding: 0 20px;
+    width: 100%;
+}
+
 body {
     background: url('/static/images/homepage_background.jpg') no-repeat center center fixed;
     background-size: cover;
@@ -23,9 +30,19 @@ footer {
     height: fit-content;
 }
 
+.product-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
 .card{
-    min-width: 300px;
     width: 300px;
+    height: auto;
 }
 
 .card img {
@@ -40,7 +57,7 @@ footer {
 	top: 0;
 	left: 0;
 	position: fixed;
-	background: white;
+	background: rgba(255, 248, 248, 0.5);
 	z-index: -1;
 }
 
