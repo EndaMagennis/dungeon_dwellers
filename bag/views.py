@@ -13,10 +13,10 @@ def view_bag(request):
 
     return render(request, 'bag/bag.html')
 
+
 def add_to_bag(request, item_id):
-    """add product to the shopping bag"""
+    """Add product to the shopping bag"""
     product = get_object_or_404(Product, pk=item_id)
-    redirect_url = request.POST.get('redirect_url')
     quantity = 1
     bag = request.session.get('bag', {})
 
@@ -28,8 +28,25 @@ def add_to_bag(request, item_id):
         messages.success(request, f'Added {product.name} quantity to bag')
 
     request.session['bag'] = bag
-    return redirect(redirect_url)
+    return redirect('view_bag')
 
+
+def adjust_bag(request, item_id):
+    """Adjust quantity of select product in bag"""
+
+    product = get_object_or_404(Product, pk=item_id)
+    quantity = int(request.POST.get('quantity'))
+    bag = request.session.get('bag', {})
+
+    if quantity > 0:
+        bag[item_id] = quantity
+        messages.success(request, f'Updated {product.name} quantity to {bag[item_id]}')
+    else:
+        bag.pop(item_id)
+        messages.success(request, f'Removed {product.name} from your bag')
+
+    request.session['bag'] = bag
+    return redirect(reverse('view_bag'))
 
 def remove_from_bag(request, item_id):
     """Remove the item from the shopping bag"""
