@@ -22,11 +22,11 @@
                 <hr>
             </div>
         </div>
-        <div class="row">
-            <div class="product-container col-10 offset-1">
+        <div class="row d-flex align-items-center justify-content-space-around">
+            <div class="product-container col-10 offset-1 ">
                 <div class="row">
                 {% for product in products %}
-                    <div class="card border-0 m-2 text-left">
+                    <div class="card border-0 m-3 text-left">
                     {% if product.images.all %}
                         <a href="{% url 'product_detail' product.id %}">
                             <img src="{{ product.get_main_image }}" class="card-img-top" alt="{{ product.image.alt_text }}">
@@ -37,8 +37,16 @@
                         </a>
                     {% endif %}
                         <div class="card-body row">
+                            {% if user.is_authenticated %}
+                                {% if user.is_superuser %}
+                                    <div class="col-12">
+                                        <a href="{% url 'edit_product' product.id %}" class="btn btn-dark bt-sm"><small>Edit Product</small></a>
+
+                                    </div>
+                                {% endif %}
+                            {% endif %}
                             <h5 class="card-title col-9">{{ product.name }}</h5>
-                            <button class="col-3 add-to-wishlist btn" data-id="{{ product.id }}">
+                            <button class="col-3 btn {% if user.is_authenticated %}add-to-wishlist{% else %}tooltip{% endif %}" data-id="{{ product.id }}">
                                 <i class="fa-regular fa-heart"></i>
                             </button>
                             <p class="card-text col-12">{{ product.description| truncatewords:10 }}</p>
@@ -59,15 +67,35 @@
                                     {% endfor %}
                                     </div>
                                 {% endif %}
+                                
                                 </div>
                             </div>
                         </div>
                     </div>
                 {% endfor %}
                 </div>
+                {% if products.paginator.num_pages %}
+                    <div class="row d-flex justify-content-center">
+                        <div class="pagination my-5">
+                            <span class="page-links mr-2">
+                                {% if products.has_previous %}
+                                    <a href="?page=1" class="btn btn-dark"><i class="fa fa-caret-left"></i><i class="fa fa-caret-left"></i> First</a>
+                                    <a href="?page={{ products.previous_page_number }}" class="btn btn-dark"><i class="fa fa-caret-left"></i> Previous</a>
+                                {% endif %}
+                            </span>
+                            <span class="page-links ml-2">
+                                {% if products.has_next %}
+                                    <a href="?page={{ products.next_page_number }}" class="btn btn-dark">Next <i class="fa fa-caret-right"></i></a>
+                                    <a href="?page={{ products.paginator.num_pages }}" class="btn btn-dark">Last <i class="fa fa-caret-right"></i><i class="fa fa-caret-right"></i></a>
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+            {% endif %}
             </div>
        </div> 
     </div>
+    
 {% endblock %}
 
 {% block postloadjs %}

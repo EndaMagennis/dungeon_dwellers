@@ -1,6 +1,19 @@
 [
     {
         "model": "products.productimage",
+        "pk": 1,
+        "fields": {
+            "product": 1,
+            "image": "bg-d-and-d.jpg",
+            "image_url": "https://res.cloudinary.com/dqvbkhyfr/image/upload/v1712667348/product_images/maosz5nl9th57jvekbat.jpg",
+            "is_active": true,
+            "default_image": true,
+            "created_at": "2024-04-09T13:07:00Z",
+            "updated_at": "2024-04-09T13:07:00Z"
+        }
+    },
+    {
+        "model": "products.productimage",
         "pk": 3,
         "fields": {
             "product": 2,

@@ -28,6 +28,6 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(ProductImage)
 class ProductImageAdmin(admin.ModelAdmin):
-    list_display = ('product', 'image', 'created_at', 'updated_at')
+    list_display = ('pk', 'product', 'image', 'image_url', 'created_at', 'updated_at')
     search_fields = ('product', 'image')
     ordering = ('product',)

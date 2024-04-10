@@ -280,4 +280,5 @@ class ProductImage(models.Model):
     def image_name(self):
         # The image_name property returns the name of the image.
         return self.image.name
+        
     

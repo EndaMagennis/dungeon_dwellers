@@ -1,34 +1,33 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load crispy_forms_tags %}
 
-
-{% block extra_title %}Add Product{% endblock %}
+{% block extra_title %}Edit Product{% endblock %}
 
 {% block page_header %}
+
 <div class="container header-container">
     <div class="row">
         <div class="col">
-            <h1>Add Product</h1>
+            <h1>Edit Product</h1>
         </div>
     </div>
 </div>
 {% endblock %}
 
 {% block content %}
-    <div class="overlay"></div>
+<div class="overlay"></div>
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 col-md-6">
                 <hr>
                 <h2 class="logo-font mb-4">Product Management</h2>
-                <h5 class="text-muted">Add a Product</h5>
+                <h5 class="text-muted">Edit Product</h5>
                 <hr>
             </div>
         </div>
     </div>
     <div class="container container-fluid bg-dark text-white w-50">
-        <form class="from-control" method="POST" action="{% url 'add_product' %}" enctype="multipart/form-data">
+        <form class="from-control" method="POST" action="{% url 'edit_product' product.id %}" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group p-3">
                 {% for field in product_form %}
@@ -43,7 +42,7 @@
                 {% endfor %}
             </div>
             <hr>
-            <button type="submit" class="m-3 btn btn-primary">Add Product</button>
+            <button type="submit" class="m-3 btn btn-primary">Update Product</button>
         </form>
     </div>
 {% endblock %}

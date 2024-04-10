@@ -1,8 +1,7 @@
 from django.views import View
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q
 from django.core.paginator import Paginator
-from django.forms.formsets import formset_factory
 from .forms import (
     ProductForm,
     ProductImageForm,
@@ -79,14 +78,55 @@ class AddProductView(View):
         image_form = ProductImageForm(request.POST, request.FILES)
         if product_form.is_valid() and image_form.is_valid():
             product = product_form.save()
-            image = image_form.save(commit=False)
+            image = request.FILES.get('image')
+            image = ProductImage(image=image)
             image.product = product
             image.save()
-            return render(request, 'products/add_product.html')
+            return redirect('products')
         context = {
             'product_form': product_form,
             'image_form': image_form,
         }
-        return render(request, 'products/add_product.html', context)
+        return render(request, 'products/products.html', context)
 
+
+class EditProductView(View):
+    """View for editing a product"""
+    def get(self, request, product_id, *args, **kwargs):
+        product = Product.objects.get(id=product_id)
+        product_form = ProductForm(instance=product)
+        image_form = ProductImageForm()
+        context = {
+            'product': product,
+            'product_form': product_form,
+            'image_form': image_form,
+        }
+        return render(request, 'products/edit_product.html', context)
+    
+    def post(self, request, product_id, *args, **kwargs):
+        product = Product.objects.get(id=product_id)
+        product_form = ProductForm(request.POST, instance=product)
+        image_form = ProductImageForm(request.POST, request.FILES)
+        if product_form.is_valid() and image_form.is_valid():
+            product = product_form.save()
+            image = request.FILES.get('image')
+            image = ProductImage(image=image)
+            image.product = product
+            image.save()
+            return redirect('products')
+        context = {
+            'product': product,
+            'product_form': product_form,
+            'image_form': image_form,
+        }
+        return render(request, 'products/products.html', context)
+    
+
+class DeleteProductView(View):
+    """View for deleting a product"""
+    def get(self, request, product_id, *args, **kwargs):
+        product = Product.objects.get(id=product_id)
+        product.delete()
+        return render(request, 'products/products.html')
+    
     

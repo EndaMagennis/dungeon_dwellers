@@ -36,7 +36,7 @@ class ProductForm(forms.ModelForm):
 class ProductImageForm(forms.ModelForm):
     class Meta:
         model = ProductImage
-        fields = '__all__'
+        fields = ('image', 'default_image')
         exclude = ('product', 'is_active')
 
     def __init__(self, *args, **kwargs):
@@ -44,8 +44,6 @@ class ProductImageForm(forms.ModelForm):
 
         placeholders = {
             'image': 'Product Image',
-            'image_url': 'Product Image URL',
-            'alt_text': 'Alt Text',
             'default_image': 'Default Image',
         }
 
@@ -59,9 +57,4 @@ class ProductImageForm(forms.ModelForm):
             self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'border-black rounded-0 profile-form-input'
     
-    def clean_image(self):
-        image = self.cleaned_data['image']
-        if not image:
-            self.add_error('image', 'No image selected')
-        return image
     
