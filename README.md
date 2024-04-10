@@ -1,6 +1,15 @@
 # Dungeon Dwellers 
 
+
+  ![landing page](documentation/images/homepage_background.jpg)
+
+  - [Deployed Site](https://dungeon-dwellers-6fd68f5d0523.herokuapp.com/)
+
+
+ 
 ## About 
+   
+  Dungeon Dwellers is an e-commerce site aimed at board game enthusiasts. The name is evocative of the adventuring and exploration which is common for character dirven board games such as Dungeons & Dragons.
 
 ---
 
@@ -9,9 +18,18 @@
 
 ### User Stories
 
+|id|user|feature| reason|
+|-|-|-|-|
+
 #### Site User
 
+|id|user|feature| reason|
+|-|-|-|-|
+
 #### Site owner/ Admin
+
+|id|user|feature| reason|
+|-|-|-|-|
 
 ## Business model
 

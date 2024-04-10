@@ -39,7 +39,8 @@
                     <form method="POST" action="{% url 'add_to_bag' product.id %} " class="col-6">
                         {% csrf_token %}
                         <div class="form-row">
-                        <button type="submit" class="btn btn-outline-light rounded-0">Add to Bag</button>
+                            <button type="submit" class="btn btn-outline-light rounded-0">Add to Bag</button>
+                        </div>
                     </form>
                 </div>
             </div>
