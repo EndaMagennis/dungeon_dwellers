@@ -14,51 +14,104 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container container-fluid h-100 mt-5">
+    <div class="container h-100 mt-5 text-white">
         <div class="row">
             {% if products %}
                 {% for product in products %}
-                    <div class="card col-12 col-md-6 col-lg-3 mt-5 mx-3">
-                        {% if product.images.all %}
-                        <img class="card-img-top rounded-0 p-2" src="{{ product.get_main_image }}" alt="{{ product.image.alt_text}}">
-                        {% else %}
-                        <img class="card-img-top rounded-0 p-2" src="{% static 'images/placeholder.jpg' %}" alt="{{ product.name }}">
-                        {% endif %}
-                        <div class="card-body">
+                    <div class="card h-100 border-0 m-2 text-dark">
+                    {% if product.images.all %}
+                        <a href="{% url 'product_detail' product.id %}">
+                            <img src="{{ product.get_main_image }}" class="card-img-top" alt="{{ product.image.alt_text }}">
+                        </a>
+                    {% else %}
+                        <a href="{% url 'product_detail' product.id %}">
+                            <img src="{% static 'images/placeholder.jpg' %}" class="card-img-top" alt="{{ product.name }}">
+                        </a>
+                    {% endif %}
+                        <div class="card-body row text-dark">
+                            <h5 class="card-title col-9">{{ product.name }}</h5>
+                            <button class="col-3 add-to-wishlist btn" data-id="{{ product.id }}">
+                                {% if product in wishlist.user.profile.wishlist %}
+                                    <i class="fa fa-heart"></i>
+                                {% else %}
+                                    <i class="fa-regular fa-heart"></i>
+                                {% endif %}
+                            </button>
+                            <p class="card-text col-12">{{ product.description| truncatewords:10 }}</p>
+                        </div>
+                        <div class="card-footer pt-0 border-0 text-left">
                             <div class="row">
-                                <h5 class="card-title col-9">{{ product.name }}</h5>
-                                <a class="col-3 btn btn-small wishlist_toggle" data-id="{{ product.id }}"><i class="fa-regular fa-heart"></i></a>
+                                <div class="col">
+                                    <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
+                                {% if product.tags %}
+                                    <div class="row">
+                                    {% for tag in product.tags.all %}
+                                        <p class="small mt-1 mb-0 col">
+                                            <a href="{% url 'products' %}?tag={{ tag.name }}" class="text-muted">
+                                                <i class="fa fa-tag mr-1"></i>
+                                                <span class="small">{{ tag.friendly_name }}</span>
+                                            </a>
+                                        </p>
+                                    {% endfor %}
+                                    </div>
+                                {% endif %}
+                                </div>
                             </div>
-                        </div>
-                        <p class="card-text">{{ product.description|truncatewords:10 }}</p>
-                        <div class="row">
-                            <p class="col">Price: €{{ product.price }}</p>
-                            {% if product.has_dimensions %}
-                            <p class="col">Height: <small>{{ product.dimensions }}mm</small></p>
-                            {% endif %}
-                            {% if product.has_quantity %}
-                            <p class="col">Quantity: {{ product.quantity }}</p>
-                            {% endif %}
-                        </div>
-                        <div class="row">
-                            {% for tag in product.tags.all %}
-                                <small class="col text-muted">{{ tag.friendly_name }}</small>
-                            {% endfor %}
-                        </div>
-                        <hr>
-                    </div>
-                    <div class="row">
-                        <div class="text-center m-0 p-0 col">
-                            <a href="{% url 'product_detail' product.id %}" class="card-link btn btn-outline-primary">View Details</a>
                         </div>
                     </div>
                 {% endfor %}
+                </div>
             {% else %}
-                    
-                <h3>No products found.</h3>
+                <div class="row d-flex h-100 align-items-center justify-content-center">
+                    <h3 class="col-12">No products in Wishlist.</h3><br><br>
+                    <div class="col-12">
+                        <p>Why not check out some products</p>
+                        <a href="{% url 'products' %}" class="btn btn-outline-primary">Continue Shopping</a>
+                    </div>
+                </div>
+                
             {% endif %}
         </div>
     </div>
 {% endblock %}
- 
+
+{% block postloadjs %}
+    <script>
+        $(document).ready(function() {
+        console.log('ready');
+            $('.add-to-wishlist').each(function (){
+                $(this).on('click', function(e) {
+                    let productId = $(this).data('id');
+                    e.stopPropagation();
+                    e.preventDefault();
+                    $(this).parent().append('<div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div>');
+                    $.ajax({
+                        type: 'POST',
+                        url: '{% url "add_remove_wishlist" %}',
+                        data: {
+                            'product_id': productId,
+                            'csrfmiddlewaretoken': '{{ csrf_token }}'
+                        },
+                        dataType: 'json',
+                        success: function (data) {
+                            if (data.product_in_wishlist == false) {
+                                $(this).html('<i class="fa-regular fa-heart"></i>');
+                            } else {
+                                $(this).html('<i class="fa fa-heart"></i>');
+                            }
+
+                            $(this).parent().find('.spinner-border').remove();
+                            setTimeout(function() {
+                                location.reload();
+                            }, 1000);
+                        },
+                        error: function (data) {
+                            console.log('error');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+{% endblock %}
 

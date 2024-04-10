@@ -1,106 +1,107 @@
 {% extends 'base.html' %}
 {% load static %}
+
+
 {% block extra_title %}Products{% endblock %}
 {% block page_header %}
 <div class="container header-container">
     <div class="row">
         <div class="col">
-            
         </div>
     </div>
 </div>
 {% endblock %}
 {% block content %}
-    <div class="container container-fluid">
-        <div class="row">
-            <div class="col text-center mt-3">
+    <div class="container-fluid text-center">
+        <div class="row d-flex justify-content-space-around">
+            <div class="col mt-5">
                 <h2 class="logo-font">Products</h2>
                 {% for category in categories.all %}
-                    <a href="{% url 'products' %}?category={{ category.name }}" class="btn btn-outline-primary">{{ category.friendly_name }}</a>
+                    <a href="{% url 'products' %}?category={{ category.name }}" class="btn btn-dark">{{ category.friendly_name }}</a>
                 {% endfor %}
                 <hr>
             </div>
         </div>
         <div class="row">
             <div class="product-container col-10 offset-1">
-                <div class="row mt-1 mb-2">
-                    <div class="col-12 col-md-6 my-auto order-md-last d-flex justufy-content-center justify-content-md-end">
-                        <div class="sort-select-wrapper w-50">
-
+                <div class="row">
+                {% for product in products %}
+                    <div class="card border-0 m-2 text-left">
+                    {% if product.images.all %}
+                        <a href="{% url 'product_detail' product.id %}">
+                            <img src="{{ product.get_main_image }}" class="card-img-top" alt="{{ product.image.alt_text }}">
+                        </a>
+                    {% else %}
+                        <a href="{% url 'product_detail' product.id %}">
+                            <img src="{% static 'images/placeholder.jpg' %}" class="card-img-top" alt="{{ product.name }}">
+                        </a>
+                    {% endif %}
+                        <div class="card-body row">
+                            <h5 class="card-title col-9">{{ product.name }}</h5>
+                            <button class="col-3 add-to-wishlist btn" data-id="{{ product.id }}">
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+                            <p class="card-text col-12">{{ product.description| truncatewords:10 }}</p>
                         </div>
-                    </div>
-                    <div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            {% for product in products %}
-            <div class="card h-100 border-0 m-2">
-                {% if product.images.all %}
-                <a href="{% url 'product_detail' product.id %}">
-                    <img src="{{ product.get_main_image }}" class="card-img-top" alt="{{ product.image.alt_text }}">
-                </a>
-                {% else %}
-                <a href="{% url 'product_detail' product.id %}">
-                    <img src="{% static 'images/placeholder.jpg' %}" class="card-img-top" alt="{{ product.name }}">
-                </a>
-                {% endif %}
-                <div class="card-body row">
-                    <h5 class="card-title col-9">{{ product.name }}</h5>
-                    <div class="col-3"><i class="fa-regular fa-heart"></i></div>
-                    <p class="card-text col-12">{{ product.description| truncatewords:10 }}</p>
-                </div>
-                <div class="card-footer pt-0 border-0 text-left">
-                    <div class="row">
-                        <div class="col">
-                            <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
-                            {% if product.tags %}
+                        <div class="card-footer pt-0 border-0 text-left">
                             <div class="row">
-                                {% for tag in product.tags.all %}
+                                <div class="col">
+                                    <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
+                                {% if product.tags %}
+                                    <div class="row">
+                                    {% for tag in product.tags.all %}
                                         <p class="small mt-1 mb-0 col">
                                             <a href="{% url 'products' %}?tag={{ tag.name }}" class="text-muted">
                                                 <i class="fa fa-tag mr-1"></i>
                                                 <span class="small">{{ tag.friendly_name }}</span>
                                             </a>
                                         </p>
-                                {% endfor %}
+                                    {% endfor %}
+                                    </div>
+                                {% endif %}
+                                </div>
                             </div>
-                            {% endif %}
                         </div>
                     </div>
+                {% endfor %}
                 </div>
             </div>
-            {% endfor %}
-        </div>
-        
+       </div> 
     </div>
 {% endblock %}
 
 {% block postloadjs %}
     <script>
         $(document).ready(function() {
-            $('.add-to-wishlist').each(function() {
+        console.log('ready');
+            $('.add-to-wishlist').each(function (){
                 $(this).on('click', function(e) {
-                    let product_id = $(this).attr('data-id');
+                    let productId = $(this).data('id');
                     e.stopPropagation();
                     e.preventDefault();
-                    $(this).parent().append('<i class="fa fa-spinner fa-spin"></i>');
+                    $(this).parent().append('<div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div>');
                     $.ajax({
-                        url: "{% url 'add_remove_wishlist' %}",
                         type: 'POST',
+                        url: '{% url "add_remove_wishlist" %}',
                         data: {
-                            'product_id': product_id,
+                            'wishlist_action': 'add_remove_wishlist',
+                            'product_id': productId,
                             'csrfmiddlewaretoken': '{{ csrf_token }}'
                         },
-                        success: function(data) {
-                            if (data.added) {
-                                $(this).html('<i class="fa fa-heart"></i>');
-                                $(this).find('i.fa-spinner').remove();
-                            } else {
+                        dataType: 'json',
+                        success: function (data) {
+                            if (data.product_in_wishlist == false) {
                                 $(this).html('<i class="fa-regular fa-heart"></i>');
+                            } else {
+                                $(this).html('<i class="fa fa-heart"></i>');
                             }
+                            $(this).parent().find('.spinner-border').remove();
+                            setTimeout(function() {
+                                location.reload();
+                            }, 1000);
+                        },
+                        error: function (data) {
+                            console.log('error');
                         }
                     });
                 });
