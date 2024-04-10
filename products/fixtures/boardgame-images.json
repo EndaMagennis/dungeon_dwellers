@@ -1,0 +1,367 @@
+[
+    {
+        "model": "products.productimage",
+        "pk": 1,
+        "fields": {
+            "product": 1,
+            "image": "bg-d-and-d.jpg",
+            "image_url": "https://res.cloudinary.com/dqvbkhyfr/image/upload/v1712667348/product_images/maosz5nl9th57jvekbat.jpg",
+            "is_active": true,
+            "default_image": true,
+            "created_at": "2024-04-09T13:07:00Z",
+            "updated_at": "2024-04-09T13:07:00Z"
+        }
+    },
+    {
+        "model": "products.productimage",
+        "pk": 3,
+        "fields": {
+            "product": 2,
+            "image": "bg-zoo-vadis.jpg",
+            "image_url": "https://res.cloudinary.com/dqvbkhyfr/image/upload/v1712661391/product_images/bg-zoo-vadis_uks484.jpg",
+            "is_active": true,
+            "default_image": true,
+            "created_at": "2024-04-09T13:07:00Z",
+            "updated_at": "2024-04-09T13:07:00Z"
+        }
+    },
+    {
+        "model": "products.productimage",
+        "pk": 4,
+        "fields": {
+            "product": 3,
+            "image": "bg-witchcraft.jpg",
+            "image_url": "https://res.cloudinary.com/dqvbkhyfr/image/upload/v1712661392/product_images/bg-witchcraft_bzvrj0.jpg",
+            "is_active": true,
+            "default_image": true,
+            "created_at": "2024-04-09T13:07:00Z",
+            "updated_at": "2024-04-09T13:07:00Z"
+        }
+    },
+    {
+        "model": "products.productimage",
+        "pk": 5,
+        "fields": {
+            "product": 4,
+            "image": "bg-wandering-towers.jpg",
+            "image_url": "https://res.cloudinary.com/dqvbkhyfr/image/upload/v1712661391/product_images/bg-wandering-towers_bgefsm.jpg",
+            "is_active": true,
+            "default_image": true,
+            "created_at": "2024-04-09T13:07:00Z",
+            "updated_at": "2024-04-09T13:07:00Z"
+        }
+    },
+    {
+        "model": "products.productimage",
+        "pk": 6,
+        "fields": {
+            "product": 5,
+            "image": "bg-undaunted.jpg",
+            "image_url": "https://res.cloudinary.com/dqvbkhyfr/image/upload/v1712661389/product_images/bg-undaunted_tijnpq.jpg",
+            "is_active": true,
+            "default_image": true,
+            "created_at": "2024-04-09T13:07:00Z",
+            "updated_at": "2024-04-09T13:07:00Z"
+        }
+    },
+    {
+        "model": "products.productimage",
+        "pk": 7,
+        "fields": {
+            "product": 6,
+            "image": "bg-trio.jpg",
+            "image_url": "https://res.cloudinary.com/dqvbkhyfr/image/upload/v1712661389/product_images/bg-trio_nzovg.jpg",
+            "is_active": true,
+            "default_image": true,
+            "created_at": "2024-04-09T13:07:00Z",
+            "updated_at": "2024-04-09T13:07:00Z"
+        }
+    },
+    {
+        "model": "products.productimage",
+        "pk": 8,
+        "fields": {
+            "product": 7,
+            "image": "bg-trailblazers.jpg",
+            "image_url": "https://res.cloudinary.com/dqvbkhyfr/image/upload/v1712661388/product_images/bg-trailblazers_jbmog8.jpg",
+            "is_active": true,
+            "default_image": true,
+            "created_at": "2024-04-09T13:07:00Z",
+            "updated_at": "2024-04-09T13:07:00Z"
+        }
+    },
+    {
+        "model": "products.productimage",
+        "pk": 9,
+        "fields": {
+            "product": 8,
+            "image": "bg-trickdraw.jpg",
+            "image_url": "https://res.cloudinary.com/dqvbkhyfr/image/upload/v1712661388/product_images/bg-trickdraw_ue4g56.jpg",
+            "is_active": true,
+            "default_image": true,
+            "created_at": "2024-04-09T13:07:00Z",
+            "updated_at": "2024-04-09T13:07:00Z"
+        }
+    },
+    {
+        "model": "products.productimage",
+        "pk": 10,
+        "fields": {
+            "product": 9,
+            "image": "bg-the-brain.png",
+            "image_url": "https://res.cloudinary.com/dqvbkhyfr/image/upload/v1712661387/product_images/bg-the-brain_xxyo44.png",
+            "is_active": true,
+            "default_image": true,
+            "created_at": "2024-04-09T13:07:00Z",
+            "updated_at": "2024-04-09T13:07:00Z"
+        }
+    },
+    {
+        "model": "products.productimage",
+        "pk": 11,
+        "fields": {
+            "product": 10,
+            "image": "bg-thats-not-a-hat.jpg",
+            "image_url": "https://res.cloudinary.com/dqvbkhyfr/image/upload/v1712661387/product_images/bg-thats-not-a-hat_ospu5w.jpg",
+            "is_active": true,
+            "default_image": true,
+            "created_at": "2024-04-09T13:07:00Z",
+            "updated_at": "2024-04-09T13:07:00Z"
+        }
+    },
+    {
+        "model": "products.productimage",
+        "pk": 12,
+        "fields": {
+            "product": 11,
+            "image": "bg-sky-team.jpg",
+            "image_url": "https://res.cloudinary.com/dqvbkhyfr/image/upload/v1712661386/product_images/bg-sky-team_rgnd7n.jpg",
+            "is_active": true,
+            "default_image": true,
+            "created_at": "2024-04-09T13:07:00Z",
+            "updated_at": "2024-04-09T13:07:00Z"
+        }
+    },
+    {
+        "model": "products.productimage",
+        "pk": 13,
+        "fields": {
+            "product": 12,
+            "image": "bg-sunrise-lane.jpg",
+            "image_url": "https://res.cloudinary.com/dqvbkhyfr/image/upload/v1712661386/product_images/bg-sunrise-lane_bcvmtd.jpg",
+            "is_active": true,
+            "default_image": true,
+            "created_at": "2024-04-09T13:07:00Z",
+            "updated_at": "2024-04-09T13:07:00Z"
+        }
+    },
+    {
+        "model": "products.productimage",
+        "pk": 14,
+        "fields": {
+            "product": 13,
+            "image": "bg-sail.jpg",
+            "image_url": "https://res.cloudinary.com/dqvbkhyfr/image/upload/v1712661385/product_images/bg-sail_cgkyzh.jpg",
+            "is_active": true,
+            "default_image": true,
+            "created_at": "2024-04-09T13:07:00Z",
+            "updated_at": "2024-04-09T13:07:00Z"
+        }
+    },
+    {
+        "model": "products.productimage",
+        "pk": 15,
+        "fields": {
+            "product": 14,
+            "image": "bg-my-island.jpg",
+            "image_url": "https://res.cloudinary.com/dqvbkhyfr/image/upload/v1712661385/product_images/bg-my-island_nfoi85.jpg",
+            "is_active": true,
+            "default_image": true,
+            "created_at": "2024-04-09T13:07:00Z",
+            "updated_at": "2024-04-09T13:07:00Z"
+        }
+    },
+    {
+        "model": "products.productimage",
+        "pk": 16,
+        "fields": {
+            "product": 15,
+            "image": "bg-mlem-space-agency.jpg",
+            "image_url": "https://res.cloudinary.com/dqvbkhyfr/image/upload/v1712661384/product_images/bg-mlem-space-agency_oboykr.jpg",
+            "is_active": true,
+            "default_image": true,
+            "created_at": "2024-04-09T13:07:00Z",
+            "updated_at": "2024-04-09T13:07:00Z"
+        }
+    },
+    {
+        "model": "products.productimage",
+        "pk": 17,
+        "fields": {
+            "product": 16,
+            "image": "bg-medici.jpg",
+            "image_url": "https://res.cloudinary.com/dqvbkhyfr/image/upload/v1712661384/product_images/bg-medici_zdlmtf.jpg",
+            "is_active": true,
+            "default_image": true,
+            "created_at": "2024-04-09T13:07:00Z",
+            "updated_at": "2024-04-09T13:07:00Z"
+        }
+    },
+    {
+        "model": "products.productimage",
+        "pk": 18,
+        "fields": {
+            "product": 17,
+            "image": "bg-maul-peak.jpg",
+            "image_url": "https://res.cloudinary.com/dqvbkhyfr/image/upload/v1712661383/product_images/bg-maul-peak_z4w1ah.jpg",
+            "is_active": true,
+            "default_image": true,
+            "created_at": "2024-04-09T13:07:00Z",
+            "updated_at": "2024-04-09T13:07:00Z"
+        }
+    },
+    {
+        "model": "products.productimage",
+        "pk": 19,
+        "fields": {
+            "product": 18,
+            "image": "bg-knarr.jpg",
+            "image_url": "https://res.cloudinary.com/dqvbkhyfr/image/upload/v1712661383/product_images/bg-knarr_oxzwtx.jpg",
+            "is_active": true,
+            "default_image": true,
+            "created_at": "2024-04-09T13:07:00Z",
+            "updated_at": "2024-04-09T13:07:00Z"
+        }
+    },
+    {
+        "model": "products.productimage",
+        "pk": 20,
+        "fields": {
+            "product": 19,
+            "image": "bg-havalandi.jpg",
+            "image_url": "https://res.cloudinary.com/dqvbkhyfr/image/upload/v1712661382/product_images/bg-havalandi_tsnt43.jpg",
+            "is_active": true,
+            "default_image": true,
+            "created_at": "2024-04-09T13:07:00Z",
+            "updated_at": "2024-04-09T13:07:00Z"
+        }
+    },
+    {
+        "model": "products.productimage",
+        "pk": 21,
+        "fields": {
+            "product": 20,
+            "image": "bg-gussy-gorrilas.jpg",
+            "image_url": "https://res.cloudinary.com/dqvbkhyfr/image/upload/v1712661382/product_images/bg-gussy-gorrilas_h7yrng.jpg",
+            "is_active": true,
+            "default_image": true,
+            "created_at": "2024-04-09T13:07:00Z",
+            "updated_at": "2024-04-09T13:07:00Z"
+        }
+    },
+    {
+        "model": "products.productimage",
+        "pk": 22,
+        "fields": {
+            "product": 21,
+            "image": "bg-fluxx.jpg",
+            "image_url": "https://res.cloudinary.com/dqvbkhyfr/image/upload/v1712661381/product_images/bg-fluxx_yz1zvu.jpg",
+            "is_active": true,
+            "default_image": true,
+            "created_at": "2024-04-09T13:07:00Z",
+            "updated_at": "2024-04-09T13:07:00Z"
+        }
+    },
+    {
+        "model": "products.productimage",
+        "pk": 23,
+        "fields": {
+            "product": 22,
+            "image": "bg-earth.jpg",
+            "image_url": "https://res.cloudinary.com/dqvbkhyfr/image/upload/v1712661380/product_images/bg-earth_s1y2ji.jpg",
+            "is_active": true,
+            "default_image": true,
+            "created_at": "2024-04-09T13:07:00Z",
+            "updated_at": "2024-04-09T13:07:00Z"
+        }
+    },
+    {
+        "model": "products.productimage",
+        "pk": 24,
+        "fields": {
+            "product": 23,
+            "image": "bg-eternity.png",
+            "image_url": "https://res.cloudinary.com/dqvbkhyfr/image/upload/v1712661380/product_images/bg-eternity_neinzb.png",
+            "is_active": true,
+            "default_image": true,
+            "created_at": "2024-04-09T13:07:00Z",
+            "updated_at": "2024-04-09T13:07:00Z"
+        }
+    },
+    {
+        "model": "products.productimage",
+        "pk": 25,
+        "fields": {
+            "product": 24,
+            "image": "bg-books-of-time.jpg",
+            "image_url": "https://res.cloudinary.com/dqvbkhyfr/image/upload/v1712661379/product_images/bg-books-of-time_ozztsy.jpg",
+            "is_active": true,
+            "default_image": true,
+            "created_at": "2024-04-09T13:07:00Z",
+            "updated_at": "2024-04-09T13:07:00Z"
+        }
+    },
+    {
+        "model": "products.productimage",
+        "pk": 26,
+        "fields": {
+            "product": 25,
+            "image": "bg-dracula.jpg",
+            "image_url": "https://res.cloudinary.com/dqvbkhyfr/image/upload/v1712661380/product_images/bg-dracula_lxbayw.jpg",
+            "is_active": true,
+            "default_image": true,
+            "created_at": "2024-04-09T13:07:00Z",
+            "updated_at": "2024-04-09T13:07:00Z"
+        }
+    },
+    {
+        "model": "products.productimage",
+        "pk": 27,
+        "fields": {
+            "product": 26,
+            "image": "bg-distilled.png",
+            "image_url": "https://res.cloudinary.com/dqvbkhyfr/image/upload/v1712661380/product_images/bg-distilled_ixvegb.png",
+            "is_active": true,
+            "default_image": true,
+            "created_at": "2024-04-09T13:07:00Z",
+            "updated_at": "2024-04-09T13:07:00Z"
+        }
+    },
+    {
+        "model": "products.productimage",
+        "pk": 28,
+        "fields": {
+            "product": 27,
+            "image": "bg-doomtown.jpg",
+            "image_url": "https://res.cloudinary.com/dqvbkhyfr/image/upload/v1712661380/product_images/bg-doomtown_xf27qa.jpg",
+            "is_active": true,
+            "default_image": true,
+            "created_at": "2024-04-09T13:07:00Z",
+            "updated_at": "2024-04-09T13:07:00Z"
+        }
+    },
+    {
+        "model": "products.productimage",
+        "pk": 29,
+        "fields": {
+            "product": 28,
+            "image": "bg-clank.jpg",
+            "image_url": "https://res.cloudinary.com/dqvbkhyfr/image/upload/v1712661379/product_images/bg-clank_tibcd1.jpg",
+            "is_active": true,
+            "default_image": true,
+            "created_at": "2024-04-09T13:07:00Z",
+            "updated_at": "2024-04-09T13:07:00Z"
+        }
+    }
+]
+

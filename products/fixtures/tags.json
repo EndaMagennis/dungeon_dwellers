@@ -1,0 +1,275 @@
+[
+  {
+    "pk": 1,
+    "model": "products.tag",
+    "fields": {
+      "name": "strategy",
+      "friendly_name": "Strategy"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "products.tag",
+    "fields": {
+      "name": "party",
+      "friendly_name": "Party"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "products.tag",
+    "fields": {
+      "name": "role_playing",
+      "friendly_name": "Role Playing"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "products.tag",
+    "fields": {
+      "name": "adventure",
+      "friendly_name": "Adventure"
+    }
+  },
+  {
+    "pk": 5,
+    "model": "products.tag",
+    "fields": {
+      "name": "cooperative",
+      "friendly_name": "Cooperative"
+    }
+  },
+  {
+    "pk": 6,
+    "model": "products.tag",
+    "fields": {
+      "name": "card_game",
+      "friendly_name": "Card Game"
+    }
+  },
+  {
+    "pk": 7,
+    "model": "products.tag",
+    "fields": {
+      "name": "fantasy",
+      "friendly_name": "Fantasy"
+    }
+  },
+  {
+    "pk": 8,
+    "model": "products.tag",
+    "fields": {
+      "name": "sci_fi",
+      "friendly_name": "Science Fiction"
+    }
+  },
+  {
+    "pk": 9,
+    "model": "products.tag",
+    "fields": {
+      "name": "puzzle",
+      "friendly_name": "Puzzle"
+    }
+  },
+  {
+    "pk": 10,
+    "model": "products.tag",
+    "fields": {
+      "name": "deck_building",
+      "friendly_name": "Deck Building"
+    }
+  },
+  {
+    "pk": 11,
+    "model": "products.tag",
+    "fields": {
+      "name": "miniatures",
+      "friendly_name": "Miniatures"
+    }
+  },
+  {
+    "pk": 12,
+    "model": "products.tag",
+    "fields": {
+      "name": "zombies",
+      "friendly_name": "Zombies"
+    }
+  },
+  {
+    "pk": 13,
+    "model": "products.tag",
+    "fields": {
+      "name": "horror",
+      "friendly_name": "Horror"
+    }
+  },
+  {
+    "pk": 14,
+    "model": "products.tag",
+    "fields": {
+      "name": "family",
+      "friendly_name": "Family"
+    }
+  },
+  {
+    "pk": 15,
+    "model": "products.tag",
+    "fields": {
+      "name": "children",
+      "friendly_name": "Children"
+    }
+  },
+  {
+    "pk": 16,
+    "model": "products.tag",
+    "fields": {
+      "name": "party_game",
+      "friendly_name": "Party Game"
+    }
+  },
+  {
+    "pk": 17,
+    "model": "products.tag",
+    "fields": {
+      "name": "abstract",
+      "friendly_name": "Abstract"
+    }
+  },
+  {
+    "pk": 18,
+    "model": "products.tag",
+    "fields": {
+      "name": "economic",
+      "friendly_name": "Economic"
+    }
+  },
+  {
+    "pk": 19,
+    "model": "products.tag",
+    "fields": {
+      "name": "thematic",
+      "friendly_name": "Thematic"
+    }
+  },
+  {
+    "pk": 20,
+    "model": "products.tag",
+    "fields": {
+      "name": "fighting",
+      "friendly_name": "Fighting"
+    }
+  },
+  {
+    "pk": 21,
+    "model": "products.tag",
+    "fields": {
+      "name": "medieval",
+      "friendly_name": "Medieval"
+    }
+  },
+  {
+    "pk": 22,
+    "model": "products.tag",
+    "fields": {
+      "name": "city_building",
+      "friendly_name": "City Building"
+    }
+  },
+  {
+    "pk": 23,
+    "model": "products.tag",
+    "fields": {
+      "name": "civilization",
+      "friendly_name": "Civilization"
+    }
+  },
+  {
+    "pk": 24,
+    "model": "products.tag",
+    "fields": {
+      "name": "space",
+      "friendly_name": "Space"
+    }
+  },
+  {
+    "pk": 25,
+    "model": "products.tag",
+    "fields": {
+      "name": "exploration",
+      "friendly_name": "Exploration"
+    }
+  },
+  {
+    "pk": 26,
+    "model": "products.tag",
+    "fields": {
+      "name": "negotiation",
+      "friendly_name": "Negotiation"
+    }
+  },
+  {
+    "pk": 27,
+    "model": "products.tag",
+    "fields": {
+      "name": "political",
+      "friendly_name": "Political"
+    }
+  },
+  {
+    "pk": 28,
+    "model": "products.tag",
+    "fields": {
+      "name": "trivia",
+      "friendly_name": "Trivia"
+    }
+  },
+  {
+    "pk": 29,
+    "model": "products.tag",
+    "fields": {
+      "name": "word_game",
+      "friendly_name": "Word Game"
+    }
+  },
+  {
+    "pk": 30,
+    "model": "products.tag",
+    "fields": {
+      "name": "educational",
+      "friendly_name": "Educational"
+    }
+  },
+  {
+    "pk": 31,
+    "model": "products.tag",
+    "fields": {
+      "name": "deduction",
+      "friendly_name": "Deduction"
+    }
+  },
+  {
+    "pk": 32,
+    "model": "products.tag",
+    "fields": {
+      "name": "real_time",
+      "friendly_name": "Real Time"
+    }
+  },
+  {
+    "pk": 33,
+    "model": "products.tag",
+    "fields": {
+      "name": "racing",
+      "friendly_name": "Racing"
+    }
+  },
+  {
+    "pk": 34,
+    "model": "products.tag",
+    "fields": {
+      "name": "sports",
+      "friendly_name": "Sports"
+    }
+  }
+
+]

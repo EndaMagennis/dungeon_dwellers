@@ -40,6 +40,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     '.herokuapp.com',
     '.codeanyapp.com',
+    '.gitpod.io'
 ]
 
 # Application definition
@@ -56,8 +57,8 @@ INSTALLED_APPS = [
     'cloudinary',
     'django.contrib.sites',
     'allauth',
-    #'allauth.account',
-    #'allauth.socialaccount',
+    'allauth.account',
+    'allauth.socialaccount',
     'crispy_forms',
     'crispy_bootstrap5',
     'bag',
@@ -143,7 +144,8 @@ DATABASES = {
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.codeanyapp.com",
-    "https://*.herokuapp.com"
+    "https://*.herokuapp.com",
+    "https://*.gitpod.io"
 ]
 
 
