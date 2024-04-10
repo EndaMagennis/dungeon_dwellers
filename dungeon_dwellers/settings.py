@@ -17,6 +17,7 @@ import os
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -53,9 +54,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary_storage',
     'cloudinary',
+    'django.contrib.sites',
     'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
+    #'allauth.account',
+    #'allauth.socialaccount',
     'crispy_forms',
     'crispy_bootstrap5',
     'bag',
@@ -67,8 +69,12 @@ INSTALLED_APPS = [
 ]
 
 SITE_ID = 1
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_USERNAME_MIN_LENGTH = 4
+LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
@@ -129,6 +135,11 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3')
     }
 }
+
+# DATABASES = {
+#     'default':
+#     dj_database_url.parse(os.environ.get('DATABASE_URL'))
+# }
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.codeanyapp.com",

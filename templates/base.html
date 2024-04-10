@@ -40,13 +40,13 @@
   
   <body>
     <header class="container-fluid fixed-top">
-      <nav class="navbar navbar-expand-lg navbar-dark text-white">
+      <nav class="navbar navbar-expand-lg navbar-dark text-white d-flex align-items-center">
         <a class="navbar-brand" href="{% url 'home' %}">DUNGEON DWELLERS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
+          <ul class="navbar-nav d-flex align-items-center">
             {% if user.is_authenticated %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'profile' user=request.user %}">Profile</a>
@@ -58,7 +58,7 @@
               <a class="nav-link" href="{% url 'products' %}">Products</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+              <a class="nav-link" href="{% url 'account/account_logout' %}">Logout</a>
             </li>
             {% else %}
             <li class="nav-item">
@@ -73,7 +73,7 @@
             {% endif %}
             <li class="list-inline-item">
                 <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'view_bag' %}">
-                    <div class="text-center">
+                    <div class="text-center small">
                         <div><i class="fas fa-shopping-bag fa-lg"></i></div>
                         <p class="my-0">
                             {% if grand_total %}
