@@ -26,7 +26,13 @@ password: qwerty1001^&*
 
 The ids in the tables below, link to a corresponding issue on a project board.
 
-[Relevant Project Board](https://github.com/users/EndaMagennis/projects/5/views/1)
+[User Stories Project Board](https://github.com/users/EndaMagennis/projects/5/views/1)
+
+[Products Project Board](https://github.com/users/EndaMagennis/projects/10/views/1)
+
+[Profile Project Board](https://github.com/users/EndaMagennis/projects/8/views/1)
+
+[Wishlist Project Board](https://github.com/users/EndaMagennis/projects/9)
 
 
 #### Site User
@@ -44,15 +50,7 @@ The ids in the tables below, link to a corresponding issue on a project board.
 |[9](https://github.com/users/EndaMagennis/projects/5/views/1?pane=issue&itemId=58525298)|Site User|Messages notify of certain actions|To know that actions have taken place|Y|
 |[10](https://github.com/users/EndaMagennis/projects/5/views/1?pane=issue&itemId=57873555)|Site user|Update profile data|So that I can update username and address|Y|
 |[11](https://github.com/users/EndaMagennis/projects/5/views/1?pane=issue&itemId=58526346)|Site User|See order history on profile|to keep track of my purchases|N|
-|[12](https://github.com/users/EndaMagennis/projects/5/views/1?pane=issue&itemId=59386779)|Site User|Make Secure Payments|So that I can purchase items directly from the site|N|
-
-
-#### Site owner/ Admin
-
-|id|user|feature|reason|finished|
-|-|-|-|-|-|
-|[1](https://github.com/EndaMagennis/e-commerce_site/issues/33)|Site Owner/Admin|Stock taking|So that I can keep track of inventory|N|
-|[2]()|||||
+|[12](https://github.com/users/EndaMagennis/projects/5/views/1?pane=issue&itemId=59386779)|Site User|Make Secure Payments|So that I can purchase items directly from the site|Functional but always returns error w/handling|
 
 ## Major Stumbling Blocks
 
