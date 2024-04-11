@@ -18,18 +18,39 @@
 
 ### User Stories
 
-|id|user|feature| reason|
-|-|-|-|-|
+The ids in the tables below, link to a corresponding issue on a project board.
+
+[Relevant Project Board](https://github.com/users/EndaMagennis/projects/5/views/1)
+
 
 #### Site User
 
-|id|user|feature| reason|
-|-|-|-|-|
+|id|user|feature|reason|finished?|
+|-|-|-|-|-|
+|[1](https://github.com/users/EndaMagennis/projects/5/views/1?pane=issue&itemId=56446212)|Site user|Intuative Design|Understand the layout and design of the website|Y|
+|[2](https://github.com/users/EndaMagennis/projects/5/views/1?pane=issue&itemId=57253107)|Site user| Account Registration | Use additional features|Y|
+|[3](https://github.com/users/EndaMagennis/projects/5/views/1?pane=issue&itemId=57253621)|Site User|Navigation|Use navigable links to peruse the site|Y|
+|[4](https://github.com/users/EndaMagennis/projects/5/views/1?pane=issue&itemId=58526031)|Site User|Search bar| Can filter results on more relevant seraches|Y|
+|[5](https://github.com/users/EndaMagennis/projects/5?pane=issue&itemId=57872462)|Site User|Save default user data|To avoid neeeding to fill order forms each time|Y|
+|[6](https://github.com/users/EndaMagennis/projects/5?pane=issue&itemId=58519637)|Site User|Add items to a wishlist|To return to later without needing to buy immediately| Y|
+|[7](https://github.com/users/EndaMagennis/projects/5/views/1?pane=issue&itemId=57256491)|Site User|Filtering by attributes|To order the items based on price and other attributes|N|
+|[8](https://github.com/users/EndaMagennis/projects/5/views/1?pane=issue&itemId=57879979)|Site User|Updating Shopping Cart|Keep a running total of items while still allowing to browse the site|Y|
+|[9](https://github.com/users/EndaMagennis/projects/5/views/1?pane=issue&itemId=58525298)|Site User|Messages notify of certain actions|To know that actions have taken place|Y|
+|[10](https://github.com/users/EndaMagennis/projects/5/views/1?pane=issue&itemId=57873555)|Site user|Update profile data|So that I can update username and address|Y|
+|[11](https://github.com/users/EndaMagennis/projects/5/views/1?pane=issue&itemId=58526346)|Site User|See order history on profile|to keep track of my purchases|N|
+|[12](https://github.com/users/EndaMagennis/projects/5/views/1?pane=issue&itemId=59386779)|Site User|Make Secure Payments|So that I can purchase items directly from the site|N|
+
 
 #### Site owner/ Admin
 
-|id|user|feature| reason|
-|-|-|-|-|
+|id|user|feature|reason|finished|
+|-|-|-|-|-|
+|[1](https://github.com/EndaMagennis/e-commerce_site/issues/33)|Site Owner/Admin|Stock taking|So that I can keep track of inventory|N|
+|[2]()|||||
+
+## Major Stumbling Blocks
+
+Twice during this project, I ran into issues with the database where the only solution was to flush the data and start again. The current repo is actually the second attempt at this project, which is why there are more issues on the project boards than represented in the github repo. 
 
 ## Business model
 
@@ -56,7 +77,15 @@ Due to being a niche store, the customer base would expect the store to compete 
 
 ## Web Marketing
 
-- 
+### facebook Business page
+
+Facebook, with over 3billion users is an obvious choice for web marketing.
+Additionally, Facebook offer many options for boosting engagement and SEO, both free and paid.
+
+[Facebook Page](https://www.facebook.com/profile.php?id=61558423709057)
+
+![Facebook business page](documentation/images/marketing-facebook.png)
+
 
 ## Technologies Used
 
@@ -77,7 +106,7 @@ Due to being a niche store, the customer base would expect the store to compete 
   
   - [SQLite](https://www.sqlite.org/): was used as a development database.
 
-  - [ElephantSQL](https://www.elephantsql.com/): a cloud based postgreSQL database
+  - [CI Database Maker](https://dbs.ci-dbs.net/): a cloud based postgreSQL database
 
 - ### Other Tools and Dependencies
   - [Git](https://git-scm.com/): version control for continuous development
@@ -86,7 +115,7 @@ Due to being a niche store, the customer base would expect the store to compete 
   - [Gunicorn](https://gunicorn.org/): Unix model which creates Python wsgi Http server
   - [Django-allauth](https://docs.allauth.org/en/latest/release-notes/recent.html#id11): account creation library for django
   - [GitHub](https://github.com/): cloud repository for source code
-  - [CodeAnywhere](https://app.codeanywhere.com/): Cloud IDE service used for the majority of development
+  - [GitPod](https://www.gitpod.io/): Cloud IDE service used for the majority of development
   - [Heroku](https://id.heroku.com/login): Used to deploy the webisite
   - [VSCode](https://code.visualstudio.com/): Local IDE used as backup
   - [Chrome DevTools](https://developer.chrome.com/docs/devtools/open/): used to debug 
