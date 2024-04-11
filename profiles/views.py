@@ -14,7 +14,7 @@ class ProfileView(View):
         
         if request.user.is_authenticated:
             profile = get_object_or_404(Profile, user=request.user)
-            addresses = Address.objects.filter(profile=profile)
+            addresses = Address.objects.filter(user=request.user)
             default_address = addresses.filter(is_default=True)
 
             context = {
@@ -81,7 +81,7 @@ class AddressCreateView(View):
         form = AddressForm(request.POST)
         if form.is_valid():
             address = form.save(commit=False)
-            address.profile = request.user.profile
+            address.user = request.user
             address.save()
             messages.success(request, 'Address created successfully')
             return redirect(reverse('profile', args=[request.user.username]))

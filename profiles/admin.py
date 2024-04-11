@@ -12,7 +12,7 @@ class ProfileAdmin(admin.ModelAdmin):
 
 @admin.register(Address)
 class AddressAdmin(admin.ModelAdmin):
-    list_display = ('profile', 'address_line_1', 'city', 'post_code', 'country')
-    search_fields = ('profile__user__username', 'address_line_1', 'city', 'post_code', 'country')
-    ordering = ('profile',)
+    list_display = ('user', 'address_line_1', 'city', 'post_code', 'country')
+    search_fields = ('user__username', 'address_line_1', 'city', 'post_code', 'country')
+    ordering = ('user',)
     list_filter = ('country',)

@@ -44,8 +44,6 @@ def checkout(request):
             'country': request.POST['country'],
             'postcode': request.POST['postcode'],
             'town_or_city': request.POST['town_or_city'],
-            'street_address1': request.POST['street_address1'],
-            'street_address2': request.POST['street_address2'],
             'county': request.POST['county'],
         }
         order_form = OrderForm(form_data)
@@ -96,7 +94,10 @@ def checkout(request):
         if request.user.is_authenticated:
             try:
                 profile = Profile.objects.get(user=request.user)
-                address = Address()
+                address = Address.objects.get(
+                    user=request.user,
+                    is_default=True
+                )
                 order_form = OrderForm(initial={
                     'full_name': profile.user.get_full_name(),
                     'email': profile.user.email,
@@ -104,8 +105,8 @@ def checkout(request):
                     'country': address.country,
                     'postcode': address.post_code,
                     'town_or_city': address.city,
-                    'street_address1': address.address_line_1,
-                    'street_address2': address.address_line_2,
+                    'street_address_1': address.address_line_1,
+                    'street_address_2': address.address_line_2,
                     'county': address.county
                 })
             except Profile.DoesNotExist:
@@ -135,7 +136,10 @@ def checkout_success(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
     if request.user.is_authenticated:
         profile = Profile.objects.get(user=request.user)
-        address = Address.objects.get(user=request.user)
+        address = Address.objects.get(
+            user=request.user,
+            is_default=True
+        )
 
         # Attach the user's profile to the order
         order.user_profile = profile
@@ -148,8 +152,8 @@ def checkout_success(request, order_number):
                 'country': order.country,
                 'post_code': order.postcode,
                 'city': order.town_or_city,
-                'street_address_1': order.street_address1,
-                'street_address_2': order.street_address2,
+                'street_address_1': order.street_address_1,
+                'street_address_2': order.street_address_2,
                 'county': order.county,
             }
             address_form = AddressForm(profile_data, instance=profile)

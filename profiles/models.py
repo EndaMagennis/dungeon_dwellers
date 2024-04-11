@@ -63,11 +63,12 @@ post_save.connect(create_profile, sender=User)
 
 class Address(models.Model):
     """Model for user address"""
-    profile = models.ForeignKey(
-        Profile,
+    user = models.ForeignKey(
+        User,
         on_delete=models.CASCADE,
         related_name='addresses',
-        verbose_name='Profile',
+        default='',
+        verbose_name='User',
     )
     address_line_1 = models.CharField(
         max_length=80,
@@ -130,6 +131,6 @@ class Address(models.Model):
         super().save(*args, **kwargs)
         
         if self.is_default:
-            for address in self.profile.addresses.exclude(id=self.id):
+            for address in self.user.addresses.exclude(id=self.id):
                 address.is_default = False
                 address.save()

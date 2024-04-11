@@ -40,7 +40,7 @@
                     <div class="row">
                         <div class="col-2 mb-1">
                             <a href="{% url 'product_detail' item.product.id %}">
-                                <img class="w-100" src="{{ iproduct.get_main_image }}" alt="{{ product.name }}">
+                                <img class="w-100" src="{{ item.product.get_main_image }}" alt="{{ product.name }}">
                             </a>
                         </div>
                         <div class="col-7">
@@ -77,8 +77,8 @@
                     </fieldset>
                     <fieldset class="rounded px-3 mb-5">
                         <legend class="fieldset-label small text-black px-2 w-auto">Delivery</legend>
-                        {{ order_form.street_address1 | as_crispy_field }}
-                        {{ order_form.street_address2 | as_crispy_field }}
+                        {{ order_form.street_address_1 | as_crispy_field }}
+                        {{ order_form.street_address_2 | as_crispy_field }}
                         {{ order_form.phone_number | as_crispy_field }}
                         {{ order_form.town_or_city | as_crispy_field }}
                         {{ order_form.county | as_crispy_field }}
@@ -106,7 +106,7 @@
                         <input type="hidden" value="{{ client_secret }}" name="client_secret">
                     </fieldset>
 
-                    <div class="submit-button text-right mt-5 mb-2">                    
+                    <div class="submit-button text-right bg-dark mt-5 mb-2">                    
 						<a href="{% url 'view_bag' %}" class="btn btn-outline-black rounded-0">
 							<span class="icon">
 								<i class="fas fa-chevron-left"></i>

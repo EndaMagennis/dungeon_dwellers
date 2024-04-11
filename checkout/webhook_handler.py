@@ -63,16 +63,16 @@ class StripeWH_Handler:
         profile = None
         username = intent.metadata.username
         if username != 'AnonymousUser':
-            profile = Profile.objects.get(user__username=username)
+            address = Address.objects.get(user__username=username)
             if save_info:
-                profile.default_phone_number = shipping_details.phone
-                profile.default_country = shipping_details.address.country
-                profile.default_postcode = shipping_details.address.postal_code
-                profile.default_town_or_city = shipping_details.address.city
-                profile.default_street_address1 = shipping_details.address.line1
-                profile.default_street_address2 = shipping_details.address.line2
-                profile.default_county = shipping_details.address.state
-                profile.save()
+                address.phone_number = shipping_details.phone
+                address.country = shipping_details.address.country
+                address.post_code = shipping_details.address.postal_code
+                address.town_or_city = shipping_details.address.city
+                address.street_address_1 = shipping_details.address.line_1
+                address.street_address_2 = shipping_details.address.line_2
+                address.county = shipping_details.address.state
+                address.save()
 
         order_exists = False
         attempt = 1
@@ -85,8 +85,8 @@ class StripeWH_Handler:
                     country__iexact=shipping_details.address.country,
                     postcode__iexact=shipping_details.address.postal_code,
                     town_or_city__iexact=shipping_details.address.city,
-                    street_address1__iexact=shipping_details.address.line1,
-                    street_address2__iexact=shipping_details.address.line2,
+                    street_address_1__iexact=shipping_details.address.line1,
+                    street_address_2__iexact=shipping_details.address.line2,
                     county__iexact=shipping_details.address.state,
                     grand_total=grand_total,
                     original_bag=bag,
@@ -113,8 +113,8 @@ class StripeWH_Handler:
                     country=shipping_details.address.country,
                     postcode=shipping_details.address.postal_code,
                     town_or_city=shipping_details.address.city,
-                    street_address1=shipping_details.address.line1,
-                    street_address2=shipping_details.address.line2,
+                    street_address_1=shipping_details.address.line1,
+                    street_address_2=shipping_details.address.line2,
                     county=shipping_details.address.state,
                     original_bag=bag,
                     stripe_pid=pid,

@@ -21,7 +21,7 @@ class WishlistView(View):
             }
             return render(request, 'wishlist/wishlist.html', context)
         else:
-            return render(request, 'account/login.html')
+            return render(request, 'account_login.html')
 
 
 class AddRemoveWishlistView(View):
@@ -46,7 +46,7 @@ class AddRemoveWishlistView(View):
                 }
             )
         else:
-            return render(request, 'account/login.html')
+            return render(request, 'account_login.html')
 
 class ClearWishlistView(View):
     """View for clearing wishlist"""
@@ -58,7 +58,7 @@ class ClearWishlistView(View):
             messages.success(request, 'Wishlist cleared')
             return redirect('wishlist')
         else:
-            return render(request, 'account/login.html')
+            return render(request, 'account_login.html')
         
 
 

@@ -7,7 +7,7 @@ class OrderForm(forms.ModelForm):
         model = Order
         fields = (
             'full_name', 'email', 'phone_number',
-            'street_address1', 'street_address2',
+            'street_address_1', 'street_address_2',
             'town_or_city', 'postcode', 'country',
             'county',
         )
@@ -15,8 +15,8 @@ class OrderForm(forms.ModelForm):
             'full_name': forms.TextInput(attrs={'placeholder': 'Full Name'}),
             'email': forms.EmailInput(attrs={'placeholder': 'Email'}),
             'phone_number': forms.NumberInput(attrs={'placeholder': 'Phone Number'}),
-            'street_address1': forms.TextInput(attrs={'placeholder': 'Street Address 1'}),
-            'street_address2': forms.TextInput(attrs={'placeholder': 'Street Address 2'}),
+            'street_address_1': forms.TextInput(attrs={'placeholder': 'Street Address 1'}),
+            'street_address_2': forms.TextInput(attrs={'placeholder': 'Street Address 2'}),
             'town_or_city': forms.TextInput(attrs={'placeholder': 'Town or City'}),
             'postcode': forms.TextInput(attrs={'placeholder': 'Postcode'}),
             'country': forms.TextInput(attrs={'placeholder': 'Country'}),
@@ -36,8 +36,8 @@ class OrderForm(forms.ModelForm):
             'country': 'Country',
             'postcode': 'Postcode',
             'town_or_city': 'Town or City',
-            'street_address1': 'Street Address 1',
-            'street_address2': 'Street Address 2',
+            'street_address_1': 'Street Address 1',
+            'street_address_2': 'Street Address 2',
             'county': 'County',
         }
 
