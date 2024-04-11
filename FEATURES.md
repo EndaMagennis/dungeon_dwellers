@@ -49,26 +49,41 @@ Site users can use authentication features such as register, login and logout.
   - Previous
   ![pagination navigation previous](documentation/features/pagination-prev.png)
 
+  #### Custom Error handling
+
+   When common errors, 404 and 500, occur, the user is redirected to a custom page from where they can navigate home or to the previous page.
+
+  #### Search for products
+  
+  Fuctions but one constraint is that the user must be on the products page. In future I hope to allow searching from any page
+    - Search Function
+    ![search](documentation/features/search.png)
+
+
+#### Wishlist
+Authenticated users can add items to their wishlist
+    ![wishlist](documentation/features/wishlist.png)
+
+
+### Notifications
+![notifications](documentation/features/notification.png)
+
 
 
 ### Future Implementations
   
-  #### Likes
-  Likes were the top nice to have fearture, however implementation proved difficult and caused many errors. Given time contraints it has been deprecated. This feature will be iplemented in future
-
   #### Comments
   Another common fearture that will be added in the future is comments. Comments create more interactivity and generates engagement. 
-  
-  ### User profiles
-  User profiles would give the user more control over their feed and also add to UX through customization.
 
-  #### Search for posts
-  Earlier iterations of the site nav bar contained a search bar. Again implementation proved tricky and time consuming, so MVP was prioritised. The site is still quite small and so navigation is not a massive hinderance. This feature will be added in future.
-
-  #### Multiple images per post
+  #### Multiple images per product
   Given boardgames often have a lot of components and set up, this would be nice to show how large the game actually is and what play might look like. The card of each post could have a carosel to swipe through images
 
-  #### Account verification/ retreival
-  Allauth is substantial in the options available for authentication functionality. Implementing account validation through email would make the site less vulnerable to spam and trolling, though the reach of the site currently makes it a low priority. Additonaly, there is no sensitive information, such as payment credentials or other user account info available, making this implementation a lower priority.
+####
+Inventory
 
-  As I become more familiar and proficient with Django I hope that implementation of features becomes easier and more efficient.
+####
+Stock takin
+
+
+####
+Payments
