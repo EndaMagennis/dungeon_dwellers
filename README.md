@@ -134,7 +134,11 @@ Additionally, Facebook offer many options for boosting engagement and SEO, both 
 
  ## Features
 
-Please refer to the [FEATURES.md](FEATURES.md) file for all test-related documentation.
+Please refer to the [FEATURES.md](FEATURES.md) file for all feature-related documentation.
+
+## Testing
+
+Please refer to the [TESTING.md](TESTING.md) file for testing
 
 ---
 ## Design
@@ -187,6 +191,9 @@ Please refer to [TESTING.md](TESTING.md)
 
 ## Credits
 
+- [boardgamegeek](https://boardgamegeek.com/blogpost/156777/2023-year-in-review-day-four-all-the-board-games-a): is one location I used to pull images from for my models
+- [boardgamequest](https://www.boardgamequest.com/top-10-board-games-of-2023/): the other site I pulled images from for my models
+- [Edgar Sánchez Hidalgo](https://www.artstation.com/artwork/nELnqO): whose work was used for the background image
 - [CodeInstiute](https://codeinstitute.net/ie/): for giving me the basics of django development used in the site
 - [Code Institute - Boutique Ado](https://github.com/Code-Institute-Solutions/boutique_ado_v1/tree/933797d5e14d6c3f072df31adf0ca6f938d02218): which acted as a template for styling and functionality
 - [Bootstrap](https://getbootstrap.com/): for giving me the classes for basic and clean styling used in the site
