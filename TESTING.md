@@ -149,4 +149,6 @@ Solved by adding empty '{%  block postloadjs %}' to base.html
  ### Persistent
   ![](documentation/errors/error-checkout-.png)
 
-  I closely followed the payments tutorials from the boutique ado app and tailored where necessary for my own models, and forms. However, the virtual card formwould not render at all. This meant that when sending the 'payment' there was no intent, and the  
+  I closely followed the payments tutorials from the boutique ado app and tailored where necessary for my own models, and forms. 
+  
+  One persistent issue was due to an improper folder name. Once that was resolved, the payment underwent processing but continued to fail due to an error in the form.
