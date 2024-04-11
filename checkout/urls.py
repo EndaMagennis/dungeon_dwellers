@@ -8,3 +8,6 @@ urlpatterns = [
     path('cache_checkout_data/', views.cache_checkout_data, name='cache_checkout_data'),
     path('wh/', webhook, name='webhook'),
 ]
+
+handler404 = 'board_ohm.views.handler404'
+handler500 = 'board_ohm.views.handler500'
