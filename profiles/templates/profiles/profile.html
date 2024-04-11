@@ -13,17 +13,22 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container-fluid mt-5 text-white">
+    <div class="row text-center align-items-center d-flex w-100">
+        <div class="col text-light">
+            <h2>My Profile</h2>
+        </div>
+    </div>
+    <div class="container-fluid mt-5 text-white bg-dark p-3 d-flex align-items-center justify-content-center">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-6">
                 {% if user.profile.avatar.url %}
-                    <img src="{{ user.profile.avatar.url }}" alt="{{ user.username }} profile picture" class="avatar img-round">
+                    <img src="{{ user.profile.avatar.url }}" alt="{{ user.username }} profile picture" class="avatar img-fluid img-round">
                 {% else %}
-                    <img src="{% static 'images/default_pfp.jpg' %}" alt=" profile picture" class="avatar img-round">
+                    <img src="{% static 'images/default_pfp.jpg' %}" alt=" profile picture" class="avatar img-fluid img-round">
                 {% endif %}
-                <a href="" class="btn btn-primary" id="ajax-edit-avatar-btn"><i class="fa fa-camera"></i></a>
+                <a href="" class="btn btn-outline-light" id="ajax-edit-avatar-btn"><i class="fa fa-camera"></i></a>
             </div>
-            <div class="col-md-8">
+            <div class="col-6">
                 <h1>{{ user.username }}</h1>
                 <p>{{ profile.first_name }} {{ profile.last_name }}</p>
                 <p>{{ user.email }}</p>
@@ -40,8 +45,8 @@
                 {% else %}
                     <p>No addresses</p>
                 {% endif %}
-                <a href="{% url 'update_profile' user=request.user %}" class="btn btn-primary">Edit Profile</a>
-                <a href="{% url 'add_address' %}" class="btn btn-outline-primary">Add Address</a>
+                <a href="{% url 'update_profile' user=request.user %}" class="btn btn-light">Edit Profile</a>
+                <a href="{% url 'add_address' %}" class="btn btn-outline-light">Add Address</a>
             </div>
             <hr>
             <div class="wishlist">

@@ -88,4 +88,4 @@ class AddressCreateView(View):
         context = {
             'form': form,
         }
-        return render(request, 'profiles/add_address.html', context)
+        return render(request, 'profiles/profile.html', context)
