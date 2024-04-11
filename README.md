@@ -6,10 +6,6 @@
   - [Deployed Site](https://dungeon-dwellers-6fd68f5d0523.herokuapp.com/)
 
 
-## Admin details
-username: endam
-password: qwerty1001^&*
-
 ## Card details for test payment
 4242424242424242 24/42 42424
 
