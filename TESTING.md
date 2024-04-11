@@ -120,3 +120,33 @@ Testing was carried out on a near constant basis, with each new feature
 |11|Main Page|Products don't display an 'Edit' button|Y|
 |12|Main Page|Shows pagination links|Y|
 |13|Clicking on product image directs to product detail page|Y|
+
+## Error
+
+ ### Solved
+
+- CountryField
+![](documentation/bugs/error-django-countries.png)
+Was calling 'model.CountryField' rather than simply 'CountryField'
+
+- Wrong distribution package in requirements
+ ![](documentation/bugs/error-django-distribution.png)
+
+- Search was returning multiple instances of the same product
+ ![](documentation/bugs/error-multiple-iterations.png)
+Solved by adding '.distinct()' constraint to returned result
+
+ ![](documentation/bugs/error-no-styling.png)
+Solved by adding empty '{%  block postloadjs %}' to base.html
+
+ ![](documentation/bugs/requirements_pillow%20install.png)
+
+
+ ![](documentation/errors/error-signup.png)
+ Solved by using signals to retroactively assign the profile_user_id to the newly registered user. A similar error occured with newly registered users and wishlists. The signals were updated to fix that same issue
+
+
+ ### Persistent
+  ![](documentation/errors/error-checkout-.png)
+
+  I closely followed the payments tutorials from the boutique ado app and tailored where necessary for my own models, and forms. However, the virtual card formwould not render at all. This meant that when sending the 'payment' there was no intent, and the  
