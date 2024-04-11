@@ -6,7 +6,13 @@
   - [Deployed Site](https://dungeon-dwellers-6fd68f5d0523.herokuapp.com/)
 
 
- 
+## Admin details
+username: endam
+password: qwerty1001^&*
+
+## Card details for test payment
+4242424242424242 24/42 42424
+
 ## About 
    
   Dungeon Dwellers is an e-commerce site aimed at board game enthusiasts. The name is evocative of the adventuring and exploration which is common for character dirven board games such as Dungeons & Dragons.
