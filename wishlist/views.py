@@ -47,18 +47,3 @@ class AddRemoveWishlistView(View):
             )
         else:
             return render(request, 'account_login.html')
-
-class ClearWishlistView(View):
-    """View for clearing wishlist"""
-    def post(self, request, *args, **kwargs):
-        ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
-        if request.user.is_authenticated and ajax:
-            wishlist = get_object_or_404(Wishlist, user=request.user)
-            wishlist.clear_wishlist()
-            messages.success(request, 'Wishlist cleared')
-            return redirect('wishlist')
-        else:
-            return render(request, 'account_login.html')
-        
-
-
