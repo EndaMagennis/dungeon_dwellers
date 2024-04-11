@@ -1,5 +1,5 @@
 from django.views import View
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.db.models import Q
 from django.core.paginator import Paginator
 from django.contrib import messages
@@ -43,9 +43,6 @@ class ProductView(View):
                     'tags': tags,
                     'query': query,
                 }
-            else:
-                messages.error(request, "You didn't enter any search criteria!")
-                return redirect(reverse('products'))
         return render(request, 'products/products.html', context)
 
 

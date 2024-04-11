@@ -53,13 +53,6 @@ class Profile(models.Model):
             return self.avatar.url
         return 'static/images/default_pfp.jpg'
     
-@receiver(post_save, sender=User)
-def create_profile(sender, **kwargs):
-    if kwargs['created']:
-        Profile.objects.create(user=kwargs['instance'])
-
-post_save.connect(create_profile, sender=User)
-
 
 class Address(models.Model):
     """Model for user address"""
